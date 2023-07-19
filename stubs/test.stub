@@ -1,0 +1,71 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Enums\Abilities;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
+
+class {{ class }} extends TestCase
+{
+    use DatabaseTransactions,
+        WithFaker;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->withoutExceptionHandling();
+    }
+
+    public function test_index_page()
+    {
+        // ...
+    }
+
+    public function test_create_page()
+    {
+        // ...
+    }
+
+    public function test_edit_page()
+    {
+        // ...
+    }
+
+    public function test_show_page()
+    {
+        // ...
+    }
+
+    public function test_store_method()
+    {
+        // ...
+    }
+
+    public function test_update_method()
+    {
+        // ...
+    }
+
+    public function test_delete_method()
+    {
+       // ...
+    }
+
+    public function test_toggle_active_method()
+    {
+       // ...
+    }
+
+    protected function getFormData()
+    {
+        // ...
+    }
+
+    protected function fakeModel()
+    {
+        // ...
+    }
+}

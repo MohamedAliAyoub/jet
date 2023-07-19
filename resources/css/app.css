@@ -1,0 +1,440 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --transition-delay-default: 0.15s;
+    --el-dashboard-tooltip-background: #fff;
+    --el-body-background: #f5f5f5;
+    --primary-color: rgb(0, 161, 255) !important;
+    --secondary-color: rgb(35, 173, 5) !important;
+    --secondary-color-light-500: rgb(60, 177, 34) !important;
+    --primary-color-light-500: rgb(53, 181, 255) !important;
+    --primary-color-light: rgb(140, 211, 252) !important;
+    --primary-color-text-hover: #fff;
+    --primary-color-danger: rgb(255, 66, 0);
+    --primary-color-light-danger: rgb(255, 143, 102);
+    --font-family: 'Tajawal', sans-serif !important;
+
+}
+
+* {
+    font-family: var(--font-family);
+}
+
+body {
+    background: var(--el-body-background);
+}
+
+body.dashboard {
+    overflow: hidden;
+}
+
+.layout-menu .layout-root-menuitem > .layout-menuitem-root-text {
+    margin: 0rem !important;
+}
+
+.p-avatar.p-avatar-xl {
+    width: 7rem !important;
+    height: 7rem !important;
+}
+
+.p-component-overlay {
+    background-color: rgba(140, 211, 252, 0.4) !important;
+}
+
+.p-dialog-mask.p-component-overlay {
+    background-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+/*.bg-primary-500 {
+    background-color: var(--primary-color) !important;
+}
+
+.bg-primary-500:hover {
+    background-color: var(--primary-color-light-500) !important;
+}*/
+
+/*.bg-secondary-gradient {
+    background: linear-gradient(0deg, var(--secondary-color), #304826) !important;
+}*/
+
+/*.border-primary-500 {
+    border-color: var(--primary-color-light) !important;
+}*/
+
+
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight,
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight,
+.table-p-button,
+.submit-button .p-button,
+.toggle-button,
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider,
+.p-fileupload-buttonbar .p-button {
+    @apply bg-primary-500 text-white hover:bg-primary-400 !important;
+}
+.active-route {
+    @apply text-primary-800 bg-primary-50 font-bold rounded-none border-l-4 rtl:border-l-0 rtl:border-r-4 border-primary-500
+}
+
+.table-p-button {
+    @apply hover:text-white bg-primary-400 !important;
+}
+/*
+.layout-menu ul a:hover,
+.p-paginator .p-paginator-pages .p-paginator-page:hover,
+.p-paginator-element:hover,
+.table-p-button:hover,
+.submit-button .p-button:hover,
+.toggle-button:hover {
+    @apply text-white bg-primary-400;
+}*/
+
+.p-button.p-button-secondary {
+    background: #fff !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
+}
+
+.p-button.p-button-secondary:hover {
+    background: #000 !important;
+    color: #fff !important;
+}
+
+.anchor-component {
+    transition: all var(--transition-delay-default) ease-in-out;
+    /* color: var(--primary-color) !important; */
+}
+
+.anchor-component {
+    @apply text-primary-500 hover:text-primary-400
+}
+
+.p-button {
+    border: 0 !important;
+    padding: 0.5rem 2.5rem !important;
+}
+
+.table-p-button {
+    color: var(--primary-color) !important;
+    background: transparent !important;
+}
+
+.table-p-button,
+.toggle-button {
+    width: 0 !important;
+    padding: 0.25625rem 1.29375rem !important;
+}
+
+.table-p-button:enabled {
+    border: none !important;
+    outline: none !important;
+}
+
+label.required {
+    position: relative;
+}
+label.required:after {
+    position: absolute;
+    right: -15px;
+    top: -3px;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    --tw-text-opacity: 1;
+    color: rgb(185 28 28 / var(--tw-text-opacity));
+    --tw-content: "*";
+    content: var(--tw-content);
+}
+
+.secondary-anchor,
+.primary-anchor {
+    padding: 0.5rem 2.5rem !important;
+}
+
+.p-message {
+    margin: 0.5rem 0 !important;
+}
+
+.p-message .p-message-wrapper {
+    padding: 0.75rem 1.75rem !important;
+}
+
+.dashboard-toolbar,
+.layout-sidebar {
+    border-radius: 0 !important;
+}
+
+.dashboard-toolbar {
+    background: var(--el-dashboard-tooltip-background) !important;
+    padding: 0.5rem 1rem !important;
+}
+
+.dashboard-breadcrumb {
+    border: 0 !important;
+    background: transparent !important;
+}
+
+.dashboard-panel {
+    width: 100%;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+}
+
+.dashboard-body {
+    padding: 1rem;
+}
+
+.dashboard-tabs,
+.dashboard-body {
+    margin: 0 1rem 0.5rem 1rem;
+    box-shadow: 0 0 1px 1px #ddd;
+    background: var(--el-dashboard-tooltip-background);
+}
+
+.dashboard-topbar-button {
+    background: transparent !important;
+    border: 0 !important;
+    padding: 0 !important;
+}
+
+.toggle-menu-start {
+    margin-left: 0.5rem;
+}
+
+.router-link {
+    padding: 0.75rem 0.5rem !important;
+}
+
+.p-breadcrumb {
+    padding: 1rem 0 !important;
+}
+
+.ellipsis-button {
+    width: auto !important;
+    padding: 0 !important;
+    background: unset !important;
+    border: 0 !important;
+    color: #000 !important;
+}
+
+.p-menu .p-menuitem-separator {
+    margin: 0 !important;
+}
+
+.action-menu {
+    padding: 0.5rem !important;
+}
+
+.p-menuitem-content {
+    background-color: transparent !important;
+}
+
+.p-menuitem-content:hover,
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item:hover {
+    background-color: var(--primary-color-light) !important;
+}
+
+.p-menuitem-link:hover,
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item:hover,
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+    color: var(--primary-color-text-hover) !important;
+}
+
+.p-menuitem-text,
+.p-menuitem-icon {
+    color: inherit !important;
+}
+
+button:active {
+    outline: none !important;
+    border: 0 !important;
+}
+
+.p-dropdown:hover,
+.p-dropdown:not(.p-disabled):hover,
+.p-dropdown:not(.p-disabled):focus,
+.p-dropdown:not(.p-disabled):hover,
+input:hover,
+input:focus,
+textarea:hover,
+textarea:focus,
+.p-multiselect:hover,
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-focus {
+    @apply border-primary-500 !important;
+    /* border-color: var(--primary-color) !important; */
+}
+
+.p-dropdown:not(.p-disabled):focus {
+    box-shadow: 0 0 0 0.2rem var(--primary-color-light) !important;
+}
+
+
+.p-paginator-element:focus,
+.p-dropdown:not(.p-disabled).p-focus,
+input:focus,
+textarea:focus,
+.p-multiselect:not(.p-disabled).p-focus,
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-focus {
+    box-shadow: unset !important;
+}
+
+.p-paginator .p-dropdown .p-dropdown-label,
+.p-dropdown-trigger,
+.p-paginator-element,
+.p-datatable .p-datatable-loading-overlay  {
+    color: var(--primary-color) !important;
+}
+
+.checkbox-label {
+    margin-left: 0.5rem;
+}
+
+.p-menuitem-icon {
+    margin-right: 0.5rem;
+}
+
+.p-tabmenu-nav a {
+    transition: all var(--transition-delay-default) ease-in-out;
+}
+
+.p-tabmenu-nav a.active {
+    color: var(--primary-color) !important;
+}
+
+.p-tabmenu-nav a:hover {
+    color: var(--primary-color-light) !important;
+}
+
+
+.p-checkbox .p-checkbox-box.p-highlight {
+    border-color: var(--primary-color) !important;
+    background: var(--primary-color) !important;
+}
+
+.p-checkbox .p-checkbox-box.p-highlight:hover {
+    border-color: var(--primary-color-light) !important;
+    background: var(--primary-color-light) !important;
+}
+
+.p-checkbox .p-checkbox-box:hover {
+    border-color: var(--primary-color) !important;
+}
+
+.p-tabmenu-nav {
+    border: 0 !important;
+    padding: 0.5rem !important;
+}
+
+.p-button.p-button-danger {
+    background: var(--primary-color-danger) !important;
+}
+
+.p-button.p-button-danger:hover {
+    background: var(--primary-color-light-danger) !important;
+}
+
+.mobile-active .layout-sidebar {
+    display: unset;
+    position: absolute;
+}
+
+.mobile-active .dashboard-overlay {
+    transition: all var(--transition-delay-default) ease-in-out;
+    opacity: 0.6;
+    background: #000;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
+.toggle-button {
+    display: none !important;
+}
+
+@media screen and (max-width: 1023px) {
+    .toggle-button {
+        display: flex !important;
+    }
+}
+
+/* start otp input styles */
+.otp-input {
+    width: 100%;
+    height: 40px;
+    padding: 5px;
+    margin: 0 10px;
+    font-size: 20px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+/* Background colour of an input field with value */
+.otp-input.is-complete {
+    background-color: #e4e4e4;
+}
+.otp-input::-webkit-inner-spin-button,
+.otp-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.otp-input::placeholder {
+    font-size: 15px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* end otp input styles */
+
+.secondary-button-margin {
+    margin-left: 1rem;
+}
+
+.force-ltr {
+    direction: ltr;
+}
+
+.layout-menu ul a {
+    align-items: unset !important;
+}
+a .pi, li .pi{
+    @apply align-middle
+}
+
+
+.filterable {
+    @apply w-full md:w-1/5;
+    @apply ml-0 md:ml-2;
+}
+
+.filterable:first-of-type {
+    margin-left: 0;
+}
+
+.p-dropdown-panel .p-dropdown-items {
+    padding: 0 !important;
+}
+
+.p-inputswitch:hover {
+    background: transparent !important;
+}
+
+.delete-button-table,
+.delete-button-table:hover {
+    @apply bg-transparent text-primary-500 hover:bg-red-400 hover:text-white !important;
+}
+
+.p-multiselect-label-container {
+    height: 2.6rem;
+}
+
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+    @apply bg-green-500 !important;
+}
+
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider:hover {
+    @apply bg-green-400 !important;
+}

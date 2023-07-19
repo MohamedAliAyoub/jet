@@ -1,0 +1,155 @@
+html:lang(ar) .p-input-icon-right > svg:last-of-type, .p-input-icon-right > i:last-of-type {
+    right: unset;
+    left: 0.75rem;
+}
+
+html:lang(ar) .p-button.p-button-loading-label-only .p-button-label {
+    margin-left: unset;
+    margin-right: 0.5rem;
+}
+
+html:lang(ar) .p-message-close.p-link {
+    margin-left: unset;
+    margin-right: auto;
+}
+
+html:lang(ar) .p-message .p-message-icon {
+    margin-right: unset;
+    margin-left: 0.5rem;
+}
+
+html:lang(ar) .p-message.p-message-error {
+    border-width: 0 6px 0 0px;
+}
+
+html:lang(ar) .layout-menu ul a .layout-menuitem-icon {
+    margin-right: unset;
+    margin-left: 0.5rem;
+}
+
+html:lang(ar) .layout-menu ul a .layout-submenu-toggler {
+    margin-left: unset;
+    margin-right: auto;
+}
+
+html:lang(ar) .toggle-menu-start {
+    text-align: right;
+    margin-left: unset;
+    margin-right: 0.5rem;
+}
+
+html:lang(ar) .p-menu .p-menuitem > .p-menuitem-content .p-menuitem-link .p-menuitem-icon {
+    margin-right: unset;
+    margin-left: 0.5rem;
+}
+
+html:lang(ar) .p-datatable .p-datatable-tbody > tr > td {
+    text-align: right;
+}
+
+html:lang(ar) .p-paginator .p-dropdown .p-dropdown-label {
+    padding-right: 0.5rem;
+    padding-left: 0;
+}
+
+html:lang(ar) .p-paginator-element .p-icon {
+    transform: rotate(180deg);
+}
+
+html:lang(ar) .checkbox-label {
+    margin-left: unset;
+    margin-right: 0.5rem;
+}
+
+html:lang(ar) .p-toast .p-toast-message .p-toast-message-content .p-toast-message-text {
+    margin: 0 1rem 0 0;
+}
+
+html:lang(ar) .p-toast .p-toast-message .p-toast-message-content {
+    border: 0;
+}
+
+html:lang(ar) .p-toast .p-toast-message {
+    border-width: 0 6px 0 0;
+}
+
+html:lang(ar) .p-dialog.p-confirm-dialog .p-confirm-dialog-message:not(:first-child) {
+    margin-left: unset;
+    margin-right: 1rem;
+}
+
+html:lang(ar) .p-dialog .p-dialog-footer button {
+    margin: 0 0 0 0.5rem;
+}
+
+html:lang(ar) .p-menuitem-icon {
+    margin-right: unset;
+    margin-left: 0.5rem;
+}
+
+html:lang(ar) label.required:after {
+    right: unset;
+    left: -15px;
+}
+
+
+html:lang(ar) .secondary-button-margin {
+    margin-left: unset;
+    margin-right: 1rem;
+}
+
+html:lang(ar) .p-dropdown .p-dropdown-clear-icon {
+    right: unset !important;
+    left: 3rem !important;
+}
+
+html:lang(ar) .p-dropdown-panel .p-dropdown-header .p-dropdown-filter {
+    padding-right: 0.75rem;
+    padding-left: 1.75rem;
+    margin: 0;
+}
+
+html:lang(ar) .p-dropdown-panel .p-dropdown-header .p-dropdown-filter-icon {
+    right: unset;
+    left: 0.75rem;
+}
+
+html:lang(ar) .filterable {
+    @apply mr-0 ml-0 md:mr-2;
+}
+
+html:lang(ar) .filterable:first-of-type {
+    margin-right: 0;
+}
+
+html:lang(ar) .p-fileupload-file-actions {
+    margin-left: unset;
+    margin-right: auto;
+}
+
+html:lang(ar) .p-fileupload .p-fileupload-file-size,
+html:lang(ar) .p-button .p-button-icon-left {
+    margin-right: unset;
+    margin-left: 0.5rem;
+}
+
+html:lang(ar) .p-multiselect-panel .p-multiselect-items .p-multiselect-item .p-checkbox,
+html:lang(ar) .p-multiselect-panel .p-multiselect-header .p-checkbox {
+    margin-right: unset;
+    margin-left: 0.5rem;
+}
+
+html:lang(ar) .p-multiselect-panel .p-multiselect-header .p-multiselect-close {
+    margin-left: unset;
+    margin-right: 0.5rem;
+}
+
+html:lang(ar) .p-multiselect-panel .p-multiselect-header .p-multiselect-filter-container .p-multiselect-filter-icon {
+    right: unset;
+    left: 0.75rem;
+}
+
+html:lang(ar) .p-multiselect-panel .p-multiselect-header .p-multiselect-filter-container .p-inputtext {
+    padding-right: 0.75rem;
+    padding-left: 1.75rem;
+}

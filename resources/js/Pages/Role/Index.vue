@@ -2,11 +2,7 @@
     <Panel :breadcrumbs="[{label:$t('base.role')}]" >
         <template #actions>
             <PrimaryButton :name="$t('add')" v-ability="Ability.MODULE_ROLE_CREATE" :href="route('user.roles.create')"/>
-            <SecondaryButton
-                :name="$t('export_excel')"
-                icon="pi pi-upload"
-                @click="exportExcel()"
-            />
+            <ActionMenu :execl="true"/>
         </template>
         <TablePagination :tableData="data">
             <Column field="name" :header="$t('base.name')"></Column>
@@ -43,6 +39,7 @@ import PrimaryButton from "@/Components/Button/PrimaryButton.vue";
 import SecondaryButton from "@/Components/Button/SecondaryButton.vue";
 import {exportExcel} from "@/Helpers/Functions";
 import Panel from "@/Layout/Dashboard/Panel.vue";
+import ActionMenu from "@/Components/Menu/ActionMenu.vue";
 
 const props = defineProps({
     data: {

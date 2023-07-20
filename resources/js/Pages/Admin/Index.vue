@@ -2,11 +2,7 @@
     <Panel :breadcrumbs="[{label: $t('base.admins')}]">
         <template #actions>
             <PrimaryButton :name="$t('add')" v-ability="Ability.MODULE_ADMINS_CREATE" :href="route('user.admins.create')"/>
-            <SecondaryButton
-                :name="$t('export_excel')"
-                icon="pi pi-upload"
-                @click="exportExcel()"
-            />
+            <ActionMenu :execl="true"/>
         </template>
 
         <TablePagination :tableData="data">
@@ -64,11 +60,10 @@ import DeleteButtonTable from '@/Components/Button/DeleteButtonTable.vue';
 import {Ability} from '../../ability';
 import TablePagination from "@/Components/Table/TablePagination.vue";
 import PrimaryButton from "@/Components/Button/PrimaryButton.vue";
-import SecondaryButton from "@/Components/Button/SecondaryButton.vue";
-import {exportExcel} from "@/Helpers/Functions";
 import Avatar from 'primevue/avatar';
 import Panel from "@/Layout/Dashboard/Panel.vue";
 import ToggleButtonTable from "@/Components/Button/ToggleButtonTable.vue";
+import ActionMenu from "@/Components/Menu/ActionMenu.vue";
 
 
 const props = defineProps({

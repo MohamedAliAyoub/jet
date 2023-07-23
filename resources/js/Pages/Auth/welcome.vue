@@ -1,16 +1,14 @@
 <template>
-    <Panel>
-       <h2> {{$t('base.comming_soon')}} </h2>
-        <a :href="route('user.login')">{{$t('base.login')}}</a>
+    <Panel class="flex justify-center items-center h-screen">
+        <h2 class="text-3xl font-bold mb-4">{{$t('base.comming_soon')}}</h2>
     </Panel>
 </template>
 
 <script setup>
 
-import LoginLayout from '@/Layout/LoginLayout.vue';
-import route from 'ziggy-js';
+import EmptyLayout from '@/Layout/EmptyLayout.vue';
 
-defineOptions({layout: LoginLayout})
+defineOptions({layout: EmptyLayout})
 
 
 </script>

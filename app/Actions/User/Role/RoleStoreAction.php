@@ -24,6 +24,6 @@ class RoleStoreAction
         Bouncer::sync($role)->abilities($request->validated('abilities'));
 
         toastr()->success(__('message.success_response_message'));
-        return Redirect::route('user.roles.index');
+        return Redirect::route('user.role.index');
     }
 }

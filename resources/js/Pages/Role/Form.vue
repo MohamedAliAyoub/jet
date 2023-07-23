@@ -1,5 +1,5 @@
 <template>
-    <Panel :breadcrumbs="[{label: $t('base.role'), href: route('user.roles.index')},{label:$t('base.'+add)}]" >
+    <Panel :breadcrumbs="[{label: $t('base.role'), href: route('user.role.index')},{label:$t('base.'+add)}]" >
         <form @submit.prevent="submit">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
                 <FormInput
@@ -99,8 +99,8 @@ const form = useForm({
 
 const submit = () => {
     let url = createable
-        ? route('user.roles.store')
-        : route('user.roles.update', props.model.id)
+        ? route('user.role.store')
+        : route('user.role.update', props.model.id)
     form.post(url)
 }
 

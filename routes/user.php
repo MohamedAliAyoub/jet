@@ -89,13 +89,13 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/change-password', AdminChangePasswordAction::class)->name('change.password');
     });
 
-    Route::prefix('roles')->as('roles.')->group(function () {
-        Route::get('/', RoleIndexAction::class)->name('index');
-        Route::post('/', RoleStoreAction::class)->name('store');
-        Route::get('/create', RoleCreateAction::class)->name('create');
-        Route::get('/{role}/edit', RoleEditAction::class)->name('edit');
-        Route::post('{role}/update', RoleUpdateAction::class)->name('update');
-        Route::delete('/{role}', RoleDeleteAction::class)->name('delete');
+    Route::prefix('roles')->as('role.')->group(function () {
+        Route::get('', RoleIndexAction::class)->name('index');
+        Route::post('', RoleStoreAction::class)->name('store');
+        Route::get('create', RoleCreateAction::class)->name('create');
+        Route::get('{role}/edit', RoleEditAction::class)->name('edit');
+        Route::post('{role}', RoleUpdateAction::class)->name('update');
+        Route::delete('{role}', RoleDeleteAction::class)->name('delete');
     });
 
     Route::post('logout', LogoutAction::class)->name('logout');

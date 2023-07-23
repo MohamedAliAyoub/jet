@@ -1,7 +1,7 @@
 <template>
     <Panel :breadcrumbs="[{label:$t('base.role')}]" >
         <template #actions>
-            <PrimaryButton :name="$t('add')" v-ability="Ability.MODULE_ROLE_CREATE" :href="route('user.roles.create')"/>
+            <PrimaryButton :name="$t('add')" v-ability="Ability.MODULE_ROLE_CREATE" :href="route('user.role.create')"/>
             <ActionMenu :execl="true"/>
         </template>
         <TablePagination :tableData="data">
@@ -16,13 +16,13 @@
                     <EditButtonTable
                         :id="slot.data.id"
                         v-ability="Ability.MODULE_ROLE_UPDATE"
-                        :href="route('user.roles.edit', slot.data.id)"
+                        :href="route('user.role.edit', slot.data.id)"
                     />
                     <DeleteButtonTable
                         :id="slot.data.id"
                         :label="slot.data.name"
                         v-ability="Ability.MODULE_ROLE_DELETE"
-                        :href="route('user.roles.delete', slot.data.id)"
+                        :href="route('user.role.delete', slot.data.id)"
                     />
                 </template>
             </Column>

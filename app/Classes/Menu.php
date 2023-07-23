@@ -51,7 +51,7 @@ class Menu
              Abilities::MODULE_ROLE_INDEX,
              ModuleName::ROLES->value,
              'pi pi-cog',
-             route('user.roles.index'),
+             route('user.role.index'),
              'roles'
          );
 

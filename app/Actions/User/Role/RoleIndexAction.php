@@ -24,14 +24,14 @@ class RoleIndexAction
      * @var string
      */
 
-    public function handle(ActionRequest $request)
+    public function handle(ActionRequest $request): \Symfony\Component\HttpFoundation\BinaryFileResponse|\Inertia\Response|\Inertia\ResponseFactory
     {
         $data = Role::query()
                     ->search()
                     ->orderByDesc('id')
                     ->paginate();
 
-        if (isset($request['export_excel']) && $request['export_excel'] == true) {
+        if ($request['export_excel']) {
             return Excel::download(new RolesExport(), 'roles_' . Carbon::now()->toDateString() . '.xlsx');
         }
         return inertia('Role/Index', [

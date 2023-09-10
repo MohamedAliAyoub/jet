@@ -5,10 +5,12 @@ return [
         'home' => 'الرئيسية',
         'admins' => 'المشرفين',
         'roles' => 'الادوار',
-        'clients' => 'العملاء',
-        'blood_type' => 'نوع الدم',
-        'city' => 'المدن',
-        'areas' => 'المناطق'
-
+        'trips' => 'الرحلات',
     ],
+
+    'TripStatusEnum' =>
+        [
+            'posting' => 'وحيدا',
+            'with_passengers_onboard' => 'مع الركاب',
+        ]
 ];

@@ -55,6 +55,14 @@ class Menu
              'roles'
          );
 
+        $this->addNavItem(
+            Abilities::MODULE_TRIP_INDEX,
+            ModuleName::TRIPS->value,
+            'pi pi-twitter',
+            route('user.trips.index'),
+            'trips'
+        );
+
 
     }
 

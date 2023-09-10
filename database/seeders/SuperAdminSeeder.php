@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Silber\Bouncer\BouncerFacade;
 
@@ -15,14 +14,21 @@ class SuperAdminSeeder extends Seeder
     public function run(): void
     {
         // Super Admin
-        $superAdmin = User::query()->firstOrCreate(['email' => User::SUPERADMIN_EMAIL], [
+        $superAdmin = User::query()->firstOrCreate([
+            'email' => User::SUPERADMIN_EMAIL ,
+            'name' => 'Super Admin',
+        ], [
             'name' => 'Super Admin',
             'password' => '123456',
         ]);
 
         // Admin
-        $user = User::query()->firstOrCreate(['email' => 'mohamedali163163@gmail.com'], [
-            'name' => 'Super Admin',
+        $user = User::query()->firstOrCreate([
+            'email' => 'mohamedali163163@gmail.com' ,
+            'name' => 'Admin',
+
+        ], [
+            'name' => 'Admin',
             'password' => '123456',
         ]);
 

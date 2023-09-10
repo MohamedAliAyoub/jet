@@ -8,19 +8,23 @@ use App\Traits\SearchTrait;
 use App\Traits\TimeStampsTrait;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
+use Ramsey\Uuid\Type\Integer;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
 use Illuminate\Auth\Passwords\CanResetPassword as CanResetPasswordTrait;
 
 /**
- * @property int $id
- * @property string $name
- * @property string $email
- * @property string $avatar
+ * @property int id
+ * @property string name
+ * @property string email
+ * @property string avatar
  * @property bool is_active
+ * @property Integer parent_id
  */
 class User extends Authenticatable implements CanResetPassword
 {
@@ -31,7 +35,7 @@ class User extends Authenticatable implements CanResetPassword
         CanResetPasswordTrait,
         TimeStampsTrait;
 
-    const SUPERADMIN_EMAIL = 'info@on-nota.com';
+    const SUPERADMIN_EMAIL = 'info@privatejet.com';
     protected $appends = ['avatar_url'];
 
     /**
@@ -46,6 +50,8 @@ class User extends Authenticatable implements CanResetPassword
         'password',
         'is_active',
         'mobile',
+        'parent_id',
+        'hours'
 
     ];
     protected array $searchColumns = ['name', 'email'];
@@ -70,6 +76,16 @@ class User extends Authenticatable implements CanResetPassword
         'is_active' => 'boolean'
     ];
 
+
+    public function parent(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::Class , 'parent_id');
+    }
+
+  public function trips(): \Illuminate\Database\Eloquent\Relations\HasMany
+  {
+      return $this->hasMany(Trip::class);
+  }
 
     public function setPasswordAttribute($new_password)
     {

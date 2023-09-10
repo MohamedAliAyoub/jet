@@ -6,15 +6,13 @@
         </template>
 
         <TablePagination :tableData="data">
-            <Column >
-                <template #header>#</template>
-                <template #body="row">
-                    <Avatar :image="row.data.avatar_url"
-                            class="shadow  shadow-5xl ml-3" size="large"   shape="circle"/>
+            <Column field="name" :header="$t('base.name')">
+                <template v-if="parent_id == null" #body="row">
+                    <Anchor :label="row.data.name" v-ability="Ability.MODULE_ADMINS_INDEX_RELATIVES" :href="route('user.admins.index.Relatives' , row.data.id)"/>
                 </template>
             </Column>
-            <Column field="name" :header="$t('base.name')"></Column>
             <Column field="email" :header="$t('base.email')"></Column>
+            <Column field="hours" :header="$t('base.hours')"></Column>
             <Column field="roles" :header="$t('base.role')">
                 <template #body="row">
                     <p v-for="item in row.data.roles" v-text="item.name"/>
@@ -64,6 +62,7 @@ import Avatar from 'primevue/avatar';
 import Panel from "@/Layout/Dashboard/Panel.vue";
 import ToggleButtonTable from "@/Components/Button/ToggleButtonTable.vue";
 import ActionMenu from "@/Components/Menu/ActionMenu.vue";
+import Anchor from "@/Components/Others/Anchor.vue";
 
 
 const props = defineProps({

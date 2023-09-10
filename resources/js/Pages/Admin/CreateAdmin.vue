@@ -4,14 +4,19 @@
             <form @submit.prevent="store" method="post">
                 <div class="grid pt-2 grid-cols-2 gap-4">
                     <FormInput :form="formCreate" :required="1" :name="$t('name')"/>
-                    <FormInput :form="formCreate" type="email" :required="1" :name="$t('email')"/>
+                    <FormInput :form="formCreate" type="email"  :name="$t('email')"/>
                     <FormInput :form="formCreate" type="password" :required="1" :name="$t('password')"/>
-                    <FormInput :form="formCreate" type="password_confirmation" :required="1" :name="$t('password')"/>
+                    <FormInput :form="formCreate" type="password" :required="1" :name="$t('password_confirmation')"/>
+                    <FormInput :form="formCreate"  :name="$t('mobile')"/>
                     <FormSelect :form="formCreate" :name="'role_id'" :label="$t('role')"
                                 :options="roles"
                                 option-label="name"
                                 option-value="id"/>
-                    <FormFile :form="formCreate" :name="$t('avatar')"/>
+                    <FormSelect :form="formCreate" name="parent_id" :label="$t('base.parent')"
+                                :options="parents"
+                                option-label="name"
+                                option-value="id"/>
+
                 </div>
                 <SubmitButton :name="$t('add')"/>
             </form>
@@ -29,14 +34,15 @@ import FormFile from "@/Components/Form/FormFile.vue";
 import FormSelect from "@/Components/Form/FormSelect.vue";
 
 
-const props = defineProps(['roles']);
+const props = defineProps(['roles' , 'parents']);
 const formCreate = useForm({
     'name': null,
     'email': null,
     'password': null,
     'password_confirmation':null,
     'avatar': null,
-    'role_id': null
+    'role_id': null,
+    'parent_id': null
 
 });
 

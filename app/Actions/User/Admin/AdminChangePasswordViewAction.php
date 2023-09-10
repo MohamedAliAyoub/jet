@@ -14,7 +14,7 @@ class AdminChangePasswordViewAction
     use AsAction;
 
 
-    public function handle()
+    public function handle(): \Inertia\Response
     {
         return Inertia::render('Admin/ChangePasswordAdmin', ['data' => auth()->user()]);
     }

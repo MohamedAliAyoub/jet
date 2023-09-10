@@ -18,16 +18,16 @@ class AdminUpdateAction
 
     protected Abilities $ability = Abilities::MODULE_ADMINS_UPDATE;
 
-    public function handle(CreateAdminRequest $request, User $admin)
+    public function handle(CreateAdminRequest $request, User $admin): \Illuminate\Http\RedirectResponse
     {
         $data = $request->validated();
         unset($request->role_id);
-        if ($request->hasFile('avatar')) {
-            if (Storage::exists('public/' . $admin->avatar))
-                Storage::delete('public/' . ($admin->avatar));
-            $avatarPath = $request->file('avatar')->store('image/avatar', 'public');
-            $data['avatar'] = $avatarPath;
-        }
+//        if ($request->hasFile('avatar')) {
+//            if (Storage::exists('public/' . $admin->avatar))
+//                Storage::delete('public/' . ($admin->avatar));
+//            $avatarPath = $request->file('avatar')->store('image/avatar', 'public');
+//            $data['avatar'] = $avatarPath;
+//        }
         $admin->update($data);
 
 
@@ -40,12 +40,14 @@ class AdminUpdateAction
 
     }
 
-    public function view_form(User $admin)
+    public function view_form(User $admin): \Inertia\Response
     {
         $admin->role_id = Role::query()->where('name', $admin->getRoles()->first())->first()?->id;
         return Inertia::render('Admin/EditAdmin', [
             'data' => $admin,
-            'roles' => Role::query()->get()
+            'roles' => Role::query()->get(),
+            'parents' => User::whereNull('parent_id')->get(),
+
         ]);
     }
 }

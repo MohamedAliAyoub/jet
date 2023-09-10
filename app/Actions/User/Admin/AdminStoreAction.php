@@ -17,7 +17,7 @@ class AdminStoreAction
 
     use AsAction;
 
-    public function handle(CreateAdminRequest $request)
+    public function handle(CreateAdminRequest $request): \Illuminate\Http\RedirectResponse
     {
         $user = User::query()->create(array_merge($request->validated(), [
             'avatar' => $request->file('avatar')?->store('image/avatar', 'public'),
@@ -28,8 +28,12 @@ class AdminStoreAction
         return Redirect::route('user.admins.index');
     }
 
-    public function view_form()
+    public function view_form(): \Inertia\Response
     {
-        return Inertia::render('Admin/CreateAdmin', ['roles' => Role::query()->get()]);
+        return Inertia::render('Admin/CreateAdmin', [
+            'roles' => Role::query()->get(),
+            'parents' => User::whereNull('parent_id')->get(),
+
+        ]);
     }
 }

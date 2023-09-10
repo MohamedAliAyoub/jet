@@ -5,6 +5,7 @@ use App\Actions\User\Dahboard\DashoardAction;
 use App\Actions\User\Dahboard\ChangeLanguage;
 use App\Actions\User\Admin\{
     AdminIndexAction,
+    AdminIndexRelativesAction,
     AdminStoreAction,
     AdminUpdateAction,
     AdminDeleteAction,
@@ -22,34 +23,14 @@ use App\Actions\User\Role\{
     RoleEditAction,
     RoleDeleteAction,
 };
-use App\Actions\Client\{
-    ClientIndexAction,
-    ClientStoreAction,
-    ClientShowAction,
-    ClientCreateAction,
-    ClientEditAction,
-    ClientUpdateAction,
-    ClientDeleteAction,
-    ClientChangeIsActiveAction,
-};
-use App\Actions\BloodType\{
-    BloodTypeIndexAction,
-    BloodTypeStoreAction,
-    BloodTypeCreateAction,
-    BloodTypeEditAction,
-    BloodTypeUpdateAction,
-    BloodTypeDeleteAction,
-    BloodTypeChangeIsActiveAction,
-};
-use App\Actions\City\{
-    AreaIndexAction,
-    CityIndexAction,
-    CityStoreAction,
-    CityCreateAction,
-    CityEditAction,
-    CityUpdateAction,
-    CityDeleteAction,
-    CityChangeIsActiveAction,
+use App\Actions\User\Trip\{
+    TripIndexAction,
+    TripStoreAction,
+    TripCreateAction,
+    TripEditAction,
+    TripUpdateAction,
+    TripDeleteAction,
+    TripChangeIsActiveAction,
 };
 use App\Actions\Auth\{
     ForgotPasswordAction,
@@ -73,12 +54,24 @@ Route::middleware(['auth'])->group(function () {
     Route::post('chang-lang', ChangeLanguage::class)->name('locale.update');
     Route::prefix('admins')->as('admins.')->group(function () {
         Route::get('/', AdminIndexAction::class)->name('index');
+        Route::get('/{admin}/Relatives', AdminIndexRelativesAction::class)->name('index.Relatives');
         Route::post('/', AdminStoreAction::class)->name('store');
         Route::get('/create', [AdminStoreAction::class, 'view_form'])->name('create');
         Route::get('/{admin}/edit', [AdminUpdateAction::class, 'view_form'])->name('edit');
         Route::post('{admin}/update', AdminUpdateAction::class)->name('update');
         Route::delete('/{admin}', AdminDeleteAction::class)->name('delete');
         Route::put('change-is-active/{admin}', AdminChangeIsActiveAction::class)->name('change_active');
+
+    });
+
+    Route::prefix('trips')->as('trips.')->group(function () {
+        Route::get('/', TripIndexAction::class)->name('index');
+        Route::post('/', TripStoreAction::class)->name('store');
+        Route::get('/create', [TripStoreAction::class, 'view_form'])->name('create');
+        Route::get('/{trip}/edit', TripEditAction::class)->name('edit');
+        Route::post('{trip}/update', TripUpdateAction::class)->name('update');
+        Route::delete('/{trip}', TripDeleteAction::class)->name('delete');
+        Route::put('change-is-active/{trip}', TripChangeIsActiveAction::class)->name('change_active');
 
     });
 

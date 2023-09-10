@@ -4,10 +4,10 @@
             <form @submit.prevent="update" method="post">
                 <div class="grid pt-2 grid-cols-2 gap-4">
                     <FormInput :form="formUpdate" :required="1" :name="$t('name')"/>
-                    <FormInput :form="formUpdate" type="email" :required="1" :name="$t('email')"/>
+                    <FormInput :form="formUpdate" type="email"  :name="$t('email')"/>
                     <FormPassword :form="formUpdate" :name="$t('password')"/>
                     <FormPassword :form="formUpdate" :name="$t('password_confirmation')"/>
-                    <FormInput :form="formUpdate" :required="1" :name="$t('mobile')"/>
+                    <FormInput :form="formUpdate"  :name="$t('mobile')"/>
 
                     <FormSelect :form="formUpdate"
                                 name="role_id"
@@ -15,8 +15,12 @@
                                 :options="roles"
                                 option-label="name"
                                 option-value="id"/>
+                    <FormSelect :form="formUpdate" name="parent_id" :label="$t('base.parent')"
+                                :options="parents"
+                                option-label="name"
+                                option-value="id"/>
 
-                    <FormFile :form="formUpdate" type="file" :src="data.avatar_url" :name="$t('avatar')"/>
+<!--                    <FormFile :form="formUpdate" type="file" :src="data.avatar_url" :name="$t('avatar')"/>-->
 
                 </div>
                 <SubmitButton :name="$t('edit')"/>
@@ -37,7 +41,7 @@ import FormPassword from "@/Components/Form/FormPassword.vue";
 import FormSelect from "@/Components/Form/FormSelect.vue";
 
 
-const props = defineProps(['data', 'roles' , 'areas']);
+const props = defineProps(['data', 'roles' ,  'parents']);
 const formUpdate = useForm({
     'id': props.data?.id,
     'name': props.data?.name,
@@ -45,6 +49,7 @@ const formUpdate = useForm({
     'email': props.data?.email,
     'avatar': props.data?.avatar ?? [],
     'role_id': props.data?.role_id,
+    'parent_id': props.data?.parent_id,
     'password': '',
     'password_confirmation':'',
 });

@@ -432,9 +432,9 @@ a .pi, li .pi{
 }
 
 .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
-    @apply bg-green-500 !important;
+    @apply bg-red-500 !important;
 }
 
 .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider:hover {
-    @apply bg-green-400 !important;
+    @apply bg-red-400 !important;
 }

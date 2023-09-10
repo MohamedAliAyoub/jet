@@ -13,22 +13,21 @@ class AdminChangePasswordAction
 {
     use AsAction;
 
-    public function handle(AdminChangePasswordRequest $request)
+    public function handle(AdminChangePasswordRequest $request): \Illuminate\Http\RedirectResponse
     {
-        $admin = User::query()->find(auth()->user()->id);
-        if (Hash::check($request->current_password, $admin->password)) {
-            $admin->update(['password' => $request->new_password]);
-            toastr()->success(__('message.success_response_message'));
-        }else{
-            throw ValidationException::withMessages(['message' => 'message.error_response_message']);
-            toastr()->error(__('message.error_response_message'));
+        $admin = User::query()->find(auth()->id());
+        if (!Hash::check($request->current_password, $admin->password)) {
+            throw ValidationException::withMessages(['message' => __('message.error_response_message')]);
         }
+        $admin->update(['password' => $request->password]);
+
+        toastr()->success(__('message.success_response_message'));
         return back();
 
 
     }
 
-    public function view_form()
+    public function view_form(): \Inertia\Response
     {
         return Inertia::render('Admin/EditProfileAdmin', ['data' => auth()->user()]);
     }

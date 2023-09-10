@@ -12,11 +12,11 @@
                             <a href=""
                                 class="inline-block mx-auto mb-8 cursor-pointer box-border"
                             >
-                                <img
-                                    :src="asset('logo.png')"
-                                    alt="Logo"
-                                    class="w-full align-middle m-auto box-border"
-                                />
+<!--                                <img-->
+<!--                                    :src="asset('logo.png')"-->
+<!--                                    alt="Logo"-->
+<!--                                    class="w-full align-middle m-auto box-border"-->
+<!--                                />-->
                             </a>
                         </div>
                     </div>

@@ -4,7 +4,6 @@
             <form @submit.prevent="update" method="post">
                 <FormInput :form="formUpdate" :required="1" :name="$t('name')"/>
                 <FormInput :form="formUpdate" type="email" :required="1" :name="$t('email')"/>
-                <FormFile :form="formUpdate" type="file" :src="data.avatar_url" :name="$t('avatar')"/>
                 <SubmitButton :name="$t('edit')"/>
             </form>
         </div>

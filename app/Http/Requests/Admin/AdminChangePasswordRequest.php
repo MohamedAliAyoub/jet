@@ -15,7 +15,7 @@ class AdminChangePasswordRequest extends FormRequest
         return true;
     }
 
-    public function rules()
+    public function rules(): array
     {
         return [
             'current_password' => ['required', 'string', 'min:' . Rules::MIN_PASSWORD, 'max:' . Rules::MAX_PASSWORD],

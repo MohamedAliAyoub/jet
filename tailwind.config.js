@@ -32,7 +32,7 @@ module.exports = {
                 'sans': ['GE-Dinar', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                primary: colors.green,
+                primary: colors.red,
                 secondary: colors.green
             }
         },

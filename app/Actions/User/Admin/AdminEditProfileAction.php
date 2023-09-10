@@ -13,16 +13,16 @@ class AdminEditProfileAction
 {
     use AsAction;
 
-    public function handle(CreateAdminRequest $request )
+    public function handle(CreateAdminRequest $request ): \Illuminate\Http\RedirectResponse
     {
         $admin = User::query()->find(auth()->user()->id);
         $data = $request->validated();
-        if ($request->hasFile('avatar')) {
-            if (Storage::exists('public/'.$admin->avatar))
-                Storage::delete('public/'.($admin->avatar));
-            $avatarPath = $request->file('avatar')->store('image/avatar', 'public');
-            $data['avatar'] = $avatarPath;
-        }
+//        if ($request->hasFile('avatar')) {
+//            if (Storage::exists('public/'.$admin->avatar))
+//                Storage::delete('public/'.($admin->avatar));
+//            $avatarPath = $request->file('avatar')->store('image/avatar', 'public');
+//            $data['avatar'] = $avatarPath;
+//        }
             $admin->update($data);
         toastr()->success(__('message.success_response_message'));
         return back();
@@ -30,8 +30,10 @@ class AdminEditProfileAction
 
     }
 
-        public function view_form()
+        public function view_form(): \Inertia\Response
         {
-            return Inertia::render('Admin/EditProfileAdmin', ['data' => auth()->user()]);
+            return Inertia::render('Admin/EditProfileAdmin', [
+                'data' => auth()->user(),
+            ]);
         }
     }

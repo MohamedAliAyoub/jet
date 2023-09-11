@@ -72,6 +72,14 @@ return [
     'hours' => 'عدد الساعات'  ,
     'hour' => 'الساعة'  ,
     'heading_to' => 'الرحلة المتجهة الى ',
+    'users' => 'المستخدمين',
+    "users_count" => "عدد المستخدمين",
+    "travelers_count" => "عدد المسافرين",
+    "relatives_count" => "عدد اقارب المسافرين",
+    "trips_count" => "عدد الرحلات الكلي",
+    "cancelled_trips_count" => "عدد الرحلات الملغية",
+    "upcoming_trips_count" => "عدد الرحلات القادم",
+
 
 
 ];

@@ -23,18 +23,20 @@
             <Column field="landing_time" :header="$t('base.landing_time')"></Column>
             <Column field="flight_status_text" :header="$t('base.flight_status')"></Column>
             <Column field="hours" :header="$t('base.hours')"></Column>
+            <Column field="user.name" :header="$t('base.user_id')"></Column>
 
-
-            <Column :header="$t('base.is_active')">
+            <Column field="is_active" :header="$t('base.is_active')">
                 <template #body="row">
-                    <ToggleButtonTable
-                        :form="row.data"
-                        name="is_active"
-                        :href="route('user.trips.change_active' , row.data.id)"
-                        :ability="Ability.MODULE_TRIP_ACTIVE"
-                    />
+                    <div
+                        class="cursor-pointer"
+                        @click="changeActive(row.data.id)"
+                    >
+                        <SvgCheck class="text-green-500" v-if="row.data.is_active"/>
+                        <SvgCircleDashed class="text-orange-400" v-if="!row.data.is_active"/>
+                    </div>
                 </template>
             </Column>
+
 
             <Column
                 :header="$t('base.operations')"
@@ -57,12 +59,13 @@
 
         </TablePagination>
 
-        <Dialog :header="modalData == null ? $t('base.add') : $t('base.edit')" :showFooter="false" :visible="visible">
-            <TripModal :data="modalData" :statuses="statuses" :users="users" :visible="visible"
-                       @success="visible.status=false"/>
-        </Dialog>
+
 
     </Panel>
+    <Dialog :header="modalData == null ? $t('base.add') : $t('base.edit')" :showFooter="false" :visible="visible">
+        <TripModal :data="modalData" :statuses="statuses" :users="users" :visible="visible"
+                   @success="visible.status=false"/>
+    </Dialog>
 </template>
 
 
@@ -78,9 +81,13 @@ import Dialog from '@/Components/Dialog.vue';
 import ActionMenu from "@/Components/Menu/ActionMenu.vue";
 import ToggleButtonTable from "@/Components/Button/ToggleButtonTable.vue";
 import TripModal from "@/Pages/Trip/TripModal.vue";
+import SvgCheck from "@/Components/Svg/SvgCheck.vue";
+import SvgCircleDashed from "@/Components/Svg/SvgCircleDashed.vue";
+import {Inertia} from "@inertiajs/inertia";
 
 const modalData = ref(null);
 const visible = ref({status: false});
+
 
 
 
@@ -101,6 +108,13 @@ const props = defineProps({
 
 });
 
+const changeActive = (id) => {
+    const url = route('user.trips.change_active', id);
+    Inertia.put(url, null, {
+        preserveState: true,
+        preserveScroll: true
+    });
+}
 function openDialog() {
     modalData.value = null;
     visible.value.status = true

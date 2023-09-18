@@ -16,4 +16,15 @@ class UserBuilder extends Builder
         });
 
     }
+
+    public function relative()
+    {
+
+        if (auth()->user()->roles()->first()?->name == 'traveller') {
+            return $this->where('parent_id', auth()->user()->id);
+        }
+
+        return $this;
+
+    }
 }

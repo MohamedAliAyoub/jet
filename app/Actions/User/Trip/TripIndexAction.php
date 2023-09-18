@@ -28,8 +28,11 @@ class TripIndexAction
 
     public function handle(ActionRequest $request): \Symfony\Component\HttpFoundation\BinaryFileResponse|\Inertia\Response|\Inertia\ResponseFactory
     {
+
         $data = Trip::query()
             ->search()
+            ->traveller()
+            ->with('user')
             ->orderByDesc('id')
             ->paginate(5);
 
@@ -40,7 +43,7 @@ class TripIndexAction
         return inertia('Trip/Index', [
             'data' => $data,
             'statuses' => TripStatusEnum::getOptionsData(),
-            'users' => User::query()->whereNull('parent_id')->get(['id' , 'name'])
+            'users' => User::query()->whereNull('parent_id')->get(['id', 'name'])
         ]);
     }
 }

@@ -18,6 +18,7 @@ class AdminsExport implements  FromCollection, WithHeadings
                 'id' => $q->id,
                 'name' => $q->name ,
                 'email' => $q->email ,
+                'hours' => $q->hours ,
                 'created_at' => $q->created_at ,
                 'updated_at' => $q->updated_at ,
             ];
@@ -30,6 +31,7 @@ class AdminsExport implements  FromCollection, WithHeadings
             __('base.id'),
             __('base.name'),
             __('base.email'),
+            __('base.hours'),
             __('base.created_at'),
             __('base.updated_at'),
         ];

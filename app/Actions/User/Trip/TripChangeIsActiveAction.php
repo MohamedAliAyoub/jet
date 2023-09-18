@@ -11,7 +11,7 @@ class TripChangeIsActiveAction
     use AsAction;
     protected Abilities $ability = Abilities::MODULE_TRIP_ACTIVE;
 
-    public function handle(Trip $trip): \Illuminate\Http\RedirectResponse
+    public function handle(Trip $trip)
     {
         $trip->is_active = ! $trip->is_active;
 

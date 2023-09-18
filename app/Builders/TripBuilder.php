@@ -12,13 +12,28 @@ class TripBuilder extends Builder
             return $query->where(function ($query) use ($keyword) {
                 $query->whereRaw('LOWER(destination) LIKE ?', ['%' . strtolower($keyword) . '%'])
                     ->orWhereRaw('LOWER(departure_country) LIKE ?', ['%' . strtolower($keyword) . '%'])
-                ->orWhereRaw('LOWER(departure_city) LIKE ?', ['%' . strtolower($keyword) . '%'])
-                ->orWhereRaw('LOWER(departure_airport_name) LIKE ?', ['%' . strtolower($keyword) . '%'])
-                ->orWhereRaw('LOWER(arrival_country) LIKE ?', ['%' . strtolower($keyword) . '%'])
-                ->orWhereRaw('LOWER(arrival_city) LIKE ?', ['%' . strtolower($keyword) . '%'])
-                ->orWhereRaw('LOWER(arrival_airport_name) LIKE ?', ['%' . strtolower($keyword) . '%']);
+                    ->orWhereRaw('LOWER(departure_city) LIKE ?', ['%' . strtolower($keyword) . '%'])
+                    ->orWhereRaw('LOWER(departure_airport_name) LIKE ?', ['%' . strtolower($keyword) . '%'])
+                    ->orWhereRaw('LOWER(arrival_country) LIKE ?', ['%' . strtolower($keyword) . '%'])
+                    ->orWhereRaw('LOWER(arrival_city) LIKE ?', ['%' . strtolower($keyword) . '%'])
+                    ->orWhereRaw('LOWER(arrival_airport_name) LIKE ?', ['%' . strtolower($keyword) . '%']);
             });
         });
 
     }
+
+
+    public function traveller()
+    {
+        if (auth()->user()->roles()->first()?->name == 'traveller') {
+            return $this->where('user_id', auth()->id());
+        }
+
+        if (auth()->user()->roles()->first()?->name == 'relative') {
+            return $this->where('user_id', auth()->user()->parent_id);
+        }
+
+        return $this;
+    }
+
 }

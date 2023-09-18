@@ -28,14 +28,14 @@ class AdminIndexAction
     public function handle(ActionRequest $request): \Symfony\Component\HttpFoundation\BinaryFileResponse|\Inertia\Response|\Inertia\ResponseFactory
     {
         $data = User::query()
+            ->search()
             ->with('roles')
             ->whereNull('parent_id')
-            ->search()
-        ->orderByDesc('id')
-        ->paginate();
+            ->orderByDesc('id')
+            ->paginate();
         $usersNotActions = User::query()
             ->where('id', auth()->id())
-            ->orWhere('email' , User::SUPERADMIN_EMAIL)->get()->pluck('id');
+            ->orWhere('email', User::SUPERADMIN_EMAIL)->get()->pluck('id');
 //        dd($usersNotActions);
         if (isset($request['export_excel']) && $request['export_excel'] == true) {
             return Excel::download(new AdminsExport, 'admins_' . Carbon::now()->toDateString() . '.xlsx');

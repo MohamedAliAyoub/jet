@@ -79,6 +79,7 @@ return [
     "trips_count" => "trips count",
     "cancelled_trips_count" => "cancelled trips_count",
     "upcoming_trips_count" => "upcoming trips_count",
+    'active' => 'active',
 
 ];
 ?>

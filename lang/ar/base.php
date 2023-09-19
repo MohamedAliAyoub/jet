@@ -80,6 +80,7 @@ return [
     "cancelled_trips_count" => "عدد الرحلات الملغية",
     "upcoming_trips_count" => "عدد الرحلات القادم",
     'active' => 'نشط',
+    "terms_conditions" => "الشروط و الاحكام"
 
 
 

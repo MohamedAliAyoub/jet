@@ -16,7 +16,7 @@ class TermsResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'name' => $this->name,
+            'name' => __('base.terms_conditions'),
             'value' => $this->value_text,
         ];
     }

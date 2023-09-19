@@ -13,7 +13,7 @@ class GetTermsAction
 
     public function handle(): \Illuminate\Http\JsonResponse
     {
-        $data = ConfigValues::query()->whereIn('name' , ['terms' , 'conditions'])->get();
+        $data = ConfigValues::query()->whereIn('name' , ['terms' ])->get();
         return Response::success(TermsResource::collection($data));
     }
 }

@@ -81,5 +81,7 @@ return [
     "upcoming_trips_count" => "upcoming trips_count",
     'active' => 'active',
 
+    "terms_conditions" => "terms and conditions"
+
 ];
 ?>

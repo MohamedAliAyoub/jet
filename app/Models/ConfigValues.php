@@ -18,9 +18,9 @@ class ConfigValues extends Model
     use HasFactory ,
         HasTranslations;
 
-    protected $guarded = [];
+    protected $fillable = ['name' , 'value'];
 
-    protected array $translatable = [  'value'];
+    protected array $translatable = [ 'value'];
     protected $appends = [ 'value_text'];
 
 

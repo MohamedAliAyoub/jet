@@ -15,18 +15,18 @@ class ConfigValueSeeder extends Seeder
     {
         ConfigValues::query()->firstOrCreate( [
             'name' => 'terms',
-            'value' => json_encode([
+            'value' => [
                 'en' => 'Booking and Ticketing',
                 'ar' => 'الحجز وإصدار التذاكر',
-            ]),
+            ],
         ]);
 
         ConfigValues::query()->firstOrCreate([
             'name' => 'conditions',
-            'value' => json_encode([
+            'value' => [
                 'en' => 'Privacy and Data Protection:',
                 'ar' => 'الخصوصية وحماية البيانات:',
-            ]),
+            ],
         ]);
     }
 }

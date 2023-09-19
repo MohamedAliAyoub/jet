@@ -22,6 +22,15 @@ class TripBuilder extends Builder
 
     }
 
+    public function searchDate()
+    {
+        return $this->when(request("search_date"), function ($query, $searchDate)  {
+            return $query->where(function ($query) use ($searchDate) {
+                $query->whereDate('date', request("search_date"));
+            });
+        });
+    }
+
 
     public function traveller()
     {

@@ -19,6 +19,14 @@ Route::group(['middleware' => ['setLanguage']], function () {
         Route::get('profile', \App\Actions\Api\Profile\GetProfileAction::class);
         Route::get('terms', \App\Actions\Api\Profile\GetTermsAction::class);
         Route::post('update_fcm_token', \App\Actions\Api\Auth\ClientUpdateFCMTokenAction::class);
+        Route::prefix('trips')->as('trips.')->group(function () {
+            Route::get('', \App\Actions\Api\Trip\GetTripsAction::class);
+            Route::get('/{trip}', \App\Actions\Api\Trip\ShowTripAction::class);
+
+        });
+
     });
+
+
 
 });

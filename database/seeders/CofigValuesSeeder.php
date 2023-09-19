@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\ConfigValues;
 
 use Illuminate\Database\Seeder;
+use function Ramsey\Uuid\v1;
 
 class CofigValuesSeeder extends Seeder
 {
@@ -13,7 +14,9 @@ class CofigValuesSeeder extends Seeder
      */
     public function run(): void
     {
-        ConfigValues::query()->firstOrCreate([
+        ConfigValues::query()->firstOrCreate( [
+            'name' => 'terms',
+        ], [
             'name' => 'terms',
             'value' => json_encode([
                 'en' => 'Booking and Ticketing',
@@ -22,6 +25,8 @@ class CofigValuesSeeder extends Seeder
         ]);
 
         ConfigValues::query()->firstOrCreate([
+            'name' => 'conditions',
+        ] ,[
             'name' => 'conditions',
             'value' => json_encode([
                 'en' => 'Privacy and Data Protection:',

@@ -12,5 +12,12 @@ use App\Actions\Api\Client\{
 
 Route::group(['middleware' => ['setLanguage']], function () {
 
+    Route::post('login', \App\Actions\Api\Auth\ClientLoginAction::class);
+    Route::group(['middleware' => ['auth:api']], function () {
+
+        Route::post('logout', \App\Actions\Api\Auth\ClientLogoutAction::class);
+        Route::get('profile', \App\Actions\Api\Profile\GetProfileAction::class);
+        Route::post('update_fcm_token', \App\Actions\Api\Auth\ClientUpdateFCMTokenAction::class);
+    });
 
 });

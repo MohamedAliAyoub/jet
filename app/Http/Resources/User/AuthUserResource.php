@@ -17,9 +17,9 @@ class AuthUserResource extends JsonResource
     {
         return [
             'name' => $this->name,
-            'email' => $this->email,
-            'avatar' => $this->avatar_url,
-            'role' => $this->email === User::SUPERADMIN_EMAIL ? __('base.admin') : $this->getRoles()->first(),
+            'hours' => $this->hours,
+            'your_flights' => 90 - $this->hours,
+
         ];
     }
 }

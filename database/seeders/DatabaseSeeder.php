@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ConfigValues;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,6 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminSeeder::class);
         $this->call(RelativeSeeder::class);
         $this->call(TravellerSeeder::class);
-        $this->call(CofigValuesSeeder::class);
+        $this->call(ConfigValueSeeder::class);
     }
 }

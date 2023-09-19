@@ -20,7 +20,7 @@ class ConfigValues extends Model
 
     protected $guarded = [];
 
-    protected array $translatable = ['name' , 'value'];
+    protected array $translatable = [  'value'];
     protected $appends = [ 'value_text'];
 
 

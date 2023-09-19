@@ -17,6 +17,7 @@ Route::group(['middleware' => ['setLanguage']], function () {
 
         Route::post('logout', \App\Actions\Api\Auth\ClientLogoutAction::class);
         Route::get('profile', \App\Actions\Api\Profile\GetProfileAction::class);
+        Route::get('terms', \App\Actions\Api\Profile\GetTermsAction::class);
         Route::post('update_fcm_token', \App\Actions\Api\Auth\ClientUpdateFCMTokenAction::class);
     });
 

@@ -11,9 +11,9 @@ use Silber\Bouncer\Database\Ability;
 
 
 /**
- * @property int $id
- * @property string $name
- * @property string $title
+ * @property int id
+ * @property string name
+ * @property string title
 
  */
 class Role extends \Silber\Bouncer\Database\Role

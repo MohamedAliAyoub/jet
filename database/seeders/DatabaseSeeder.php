@@ -16,6 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminSeeder::class);
         $this->call(RelativeSeeder::class);
         $this->call(TravellerSeeder::class);
-
+        $this->call(CofigValuesSeeder::class);
     }
 }

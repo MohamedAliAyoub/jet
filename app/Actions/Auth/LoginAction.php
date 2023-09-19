@@ -59,7 +59,7 @@ class LoginAction
                         Auth::logout();
                     }
                     $request->session()->regenerate();
-                    $this->userLogService->createLog( __('message.login_title'), __('message.login_message', ['created_at' => Carbon::now()]), auth()->user()->id);
+//                    $this->userLogService->createLog('login_title' , 'login_message', auth()->user()->id);
 
                     return redirect()->intended(route('user.home'));
                 }

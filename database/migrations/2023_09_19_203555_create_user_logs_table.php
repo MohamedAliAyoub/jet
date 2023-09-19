@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('user_logs', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\User::class)->nullable();
-            $table->string('title');
-            $table->tinyText('body');
+            $table->json('title');
+            $table->json('body');
             $table->timestamps();
         });
     }

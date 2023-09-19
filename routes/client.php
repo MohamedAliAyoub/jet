@@ -24,7 +24,9 @@ Route::group(['middleware' => ['setLanguage']], function () {
             Route::get('/{trip}', \App\Actions\Api\Trip\ShowTripAction::class);
 
         });
-
+        Route::prefix('user_notifications')->as('user_notifications.')->group(function () {
+            Route::get('', \App\Actions\Api\UserLog\GetUserLogsAction::class);
+        });
     });
 
 

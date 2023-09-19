@@ -38,7 +38,17 @@ class TripStoreAction
 
         $trip = Trip::query()->create($request->validated());
 
-        $this->userLogService->createLog( __('message.trip_title', ['arrival_country' => $trip->arrival_country]), __('message.trip_message', ['created_at' => $trip->created_at]), auth()->user()->id);
+        $this->userLogService->createLog(
+            [
+                'en' => 'trip in '.$trip->arrival_country ,
+                'ar'=>'رحلة الى ' .$trip->arrival_country ] ,
+            [
+                'en' => 'You have a flight in  '.$trip->arrival_country.'  on '.$trip->date ,
+                'ar'=>'لديك رحلة الى '.$trip->arrival_country.'  بتاريخ' .$trip->date
+            ] ,
+
+            auth()->user()->id
+        );
 
         //Discount of flight hours for the user
         $unused_hours = $trip->user->hours - $trip->hours;

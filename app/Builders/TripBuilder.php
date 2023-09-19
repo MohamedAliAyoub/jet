@@ -31,6 +31,13 @@ class TripBuilder extends Builder
         });
     }
 
+    public function newTrips()
+    {
+        return $this->when(request("new_trips"), function ($query) {
+            return $query->whereDate('date', '>', now());
+        });
+    }
+
 
     public function traveller()
     {

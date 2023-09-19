@@ -16,6 +16,7 @@ class TripsResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id' => $this->id,
             'your_hours' => auth()->user()->hours,
             'your_flights' => 90 - auth()->user()->hours,
 

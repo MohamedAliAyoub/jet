@@ -7,5 +7,11 @@ return [
     'not_valid' => 'البيانات غير صحيحة.',
     'login_not_valid' => 'اسم المستخدم او كلمة المرور غير صحيح.',
 
+    //logs messages
+    'login_title' => "تسجيل الدخول" ,
+    'login_message' => "لقد قمت بتسجل الدخول بتاريخ  :created_at",
+
+    'trip_title' => 'رحلة الى  :arrival_country',
+    'trip_message' => 'لديك رحلة الى  :arrival_country  بتاريخ :created_at',
 
 ];

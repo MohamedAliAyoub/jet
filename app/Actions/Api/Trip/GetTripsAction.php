@@ -22,6 +22,7 @@ class GetTripsAction
             ])
             ->search()
             ->searchDate()
+            ->newTrips()
             ->paginate(20);
         return Response::success(TripsResource::collection($data));
     }

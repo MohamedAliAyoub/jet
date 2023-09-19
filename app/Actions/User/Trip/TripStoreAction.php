@@ -9,6 +9,8 @@ use App\Http\Requests\Trip\CreateTripRequest;
 use App\Models\Role;
 use App\Models\Trip;
 use App\Models\User;
+use App\Services\UserLogService;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Lorisleiva\Actions\ActionRequest;
@@ -19,6 +21,12 @@ class TripStoreAction
     protected Abilities $ability = Abilities::MODULE_TRIP_CREATE;
 
     use AsAction;
+    private $userLogService;
+
+    public function __construct(UserLogService $userLogService)
+    {
+        $this->userLogService = $userLogService;
+    }
 
     public function handle(CreateTripRequest $request): \Illuminate\Http\RedirectResponse
     {
@@ -29,6 +37,8 @@ class TripStoreAction
         }
 
         $trip = Trip::query()->create($request->validated());
+
+        $this->userLogService->createLog( __('message.trip_title', ['arrival_country' => $trip->arrival_country]), __('message.trip_message', ['created_at' => $trip->created_at]), auth()->user()->id);
 
         //Discount of flight hours for the user
         $unused_hours = $trip->user->hours - $trip->hours;

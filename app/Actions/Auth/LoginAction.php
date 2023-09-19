@@ -2,6 +2,8 @@
 
 namespace App\Actions\Auth;
 
+use App\Services\UserLogService;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\Rule;
@@ -12,6 +14,14 @@ use Lorisleiva\Actions\ActionRequest;
 class LoginAction
 {
     use AsAction;
+
+    private $userLogService;
+
+    public function __construct(UserLogService $userLogService)
+    {
+        $this->userLogService = $userLogService;
+    }
+
 
     final public function rules(ActionRequest $request): array
     {
@@ -49,6 +59,8 @@ class LoginAction
                         Auth::logout();
                     }
                     $request->session()->regenerate();
+                    $this->userLogService->createLog( __('message.login_title'), __('message.login_message', ['created_at' => Carbon::now()]), auth()->user()->id);
+
                     return redirect()->intended(route('user.home'));
                 }
 

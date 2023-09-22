@@ -8,4 +8,5 @@ enum ModuleName: string
     case ADMINS = 'admins';
     case ROLES = 'roles';
     case TRIPS = 'trips';
+    case NEXT_TRIPS = 'next_trips';
 }

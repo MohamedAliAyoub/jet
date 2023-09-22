@@ -6,11 +6,12 @@ return [
         'admins' => 'المشرفين',
         'roles' => 'الادوار',
         'trips' => 'الرحلات',
+        'next_trips' => 'الرحلات القادمة',
     ],
 
     'TripStatusEnum' =>
         [
-            'posting' => 'وحيدا',
+            'posting' => 'إرسال بدون ركاب',
             'with_passengers_onboard' => 'مع الركاب',
         ]
 ];

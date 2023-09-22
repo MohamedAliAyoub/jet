@@ -26,7 +26,8 @@ return new class extends Migration
             $table->date("take_off_time")->nullable();
             $table->date("landing_time")->nullable();
             $table->string("flight_status")->nullable();
-            $table->tinyInteger('hours')->nullable();
+            $table->integer('hours')->nullable();
+            $table->integer('minutes')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

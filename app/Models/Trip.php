@@ -24,6 +24,7 @@ use Ramsey\Uuid\Type\Integer;
  * @property bool landing_time
  * @property String flight_status
  * @property Integer hours
+ * @property Integer minutes
  * @property int is_active
  */
 class Trip extends Model
@@ -32,7 +33,7 @@ class Trip extends Model
 
     protected $guarded = [];
 
-    protected $appends = ['flight_status_text'];
+    protected $appends = ['flight_status_text' , 'hours_with_minutes'];
     protected $casts = [
         'date' => 'datetime',
         'take_off_time' => 'timestamp',
@@ -42,7 +43,12 @@ class Trip extends Model
     ];
     protected $dateFormat = 'Y-m-d';
 
-    // Mutator method to set 'take_off_time' attribute
+    public function getHoursWithMinutesAttribute()
+    {
+        $minutes = ($this->minutes === 0 || $this->minutes === null) ? "00" : $this->minutes;
+
+        return $this->hours . ':' .  $minutes ;
+    }    // Mutator method to set 'take_off_time' attribute
     public function setTakeOffTimeAttribute($value)
     {
         $this->attributes['take_off_time'] =Carbon::parse($value)->format('Y-m-d H:i:s');
@@ -59,6 +65,7 @@ class Trip extends Model
     {
         return $value ? Carbon::parse($value)->format('Y-m-d') : null;
     }
+
 
     public function getFlightStatusTextAttribute(): ?string
     {
@@ -78,7 +85,7 @@ class Trip extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class , 'user_id');
     }
 
     public static function query(): TripBuilder

@@ -19,8 +19,12 @@ class AdminStoreAction
 
     public function handle(CreateAdminRequest $request): \Illuminate\Http\RedirectResponse
     {
+
         $user = User::query()->create(array_merge($request->validated(), [
             'avatar' => $request->file('avatar')?->store('image/avatar', 'public'),
+            'hours_balance' => $request->hours,
+            'hours' => $request->hours * 60,
+
         ]));
         if ($request->role_id)
             $user->assign($request->role_id);

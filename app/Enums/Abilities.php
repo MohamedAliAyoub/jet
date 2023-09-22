@@ -4,14 +4,9 @@ namespace App\Enums;
 
 use App\Enums\ModuleName;
 
-
 enum Abilities: string
 {
-    /*
-     * $user = User::find(1);
-     * $isAdmin = true ? Bouncer::allow($user)->to(ADMIN_DEPARTMENT, $department);
-     * $user->can(ADMIN_DEPARTMENT, $department)
-     */
+
 
     // module admin abilities
     case MODULE_ADMINS_INDEX = 'module admins index';
@@ -28,6 +23,7 @@ enum Abilities: string
     case MODULE_ROLE_DELETE = 'module roles delete';
 
     case MODULE_TRIP_INDEX = 'module trip index';
+    case MODULE_NEXT_TRIP_INDEX = 'module next trip index';
     case MODULE_TRIP_CREATE = 'module trip create';
     case MODULE_TRIP_UPDATE = 'module trip update';
     case MODULE_TRIP_DELETE = 'module trip delete';
@@ -54,11 +50,12 @@ enum Abilities: string
         ['key' => self::MODULE_ROLE_DELETE, 'module' => ModuleName::ROLES],
 
         // module Trips  abilities
-        ['key' => self::MODULE_TRIP_INDEX, 'module' => ModuleName::ROLES],
-        ['key' => self::MODULE_TRIP_CREATE, 'module' => ModuleName::ROLES],
-        ['key' => self::MODULE_TRIP_UPDATE, 'module' => ModuleName::ROLES],
-        ['key' => self::MODULE_TRIP_DELETE, 'module' => ModuleName::ROLES],
-        ['key' => self::MODULE_TRIP_ACTIVE, 'module' => ModuleName::ROLES],
+        ['key' => self::MODULE_TRIP_INDEX, 'module' => ModuleName::TRIPS],
+        ['key' => self::MODULE_NEXT_TRIP_INDEX, 'module' => ModuleName::TRIPS],
+        ['key' => self::MODULE_TRIP_CREATE, 'module' => ModuleName::TRIPS],
+        ['key' => self::MODULE_TRIP_UPDATE, 'module' => ModuleName::TRIPS],
+        ['key' => self::MODULE_TRIP_DELETE, 'module' => ModuleName::TRIPS],
+        ['key' => self::MODULE_TRIP_ACTIVE, 'module' => ModuleName::TRIPS],
 
 
 

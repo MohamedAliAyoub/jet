@@ -13,7 +13,7 @@
         <Calendar
             :id="name"
             type="dateTime"
-            showTime hourFormat="12"
+            showTime hourFormat="24"
             v-model="form[name]"
             class="w-full p-inputtext-sm"
             :required="required"

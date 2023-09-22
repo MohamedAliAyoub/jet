@@ -19,7 +19,8 @@ return new class extends Migration {
             $table->boolean('mobile')->nullable();
             $table->boolean('is_active')->nullable()->default(1);
             $table->string('avatar')->nullable();
-            $table->tinyInteger('hours')->default(90);
+            $table->integer('hours')->default(90);
+            $table->integer('hours_balance')->default(90);
             $table->foreignId('parent_id')->nullable()->constrained('users');
             $table->rememberToken();
             $table->timestamps();

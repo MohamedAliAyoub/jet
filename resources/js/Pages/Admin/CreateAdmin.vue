@@ -16,6 +16,8 @@
                                 :options="parents"
                                 option-label="name"
                                 option-value="id"/>
+                    <FormInput :form="formCreate" :required="1" :name="$t('hours')"/>
+
 
                 </div>
                 <SubmitButton :name="$t('add')"/>
@@ -42,7 +44,8 @@ const formCreate = useForm({
     'password_confirmation':null,
     'avatar': null,
     'role_id': null,
-    'parent_id': null
+    'parent_id': null,
+    'hours': 90,
 
 });
 

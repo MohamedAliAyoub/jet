@@ -8,6 +8,7 @@
 
         <TablePagination :tableData="data">
 
+            <Column field="id" :header="$t('base.id')"></Column>
             <Column field="departure_country" :header="$t('base.departure_country')"></Column>
             <Column field="departure_city" :header="$t('base.departure_city')"></Column>
             <Column field="departure_airport_name" :header="$t('base.departure_airport_name')"></Column>
@@ -22,7 +23,11 @@
             <Column field="take_off_time" :header="$t('base.take_off_time')"></Column>
             <Column field="landing_time" :header="$t('base.landing_time')"></Column>
             <Column field="flight_status_text" :header="$t('base.flight_status')"></Column>
-            <Column field="hours" :header="$t('base.hours')"></Column>
+            <Column field="hours" :header="$t('base.hours')">
+                <template #body="row">
+                    <div>{{ row.data.hours_with_minutes }}</div>
+                </template>
+            </Column>
             <Column field="user.name" :header="$t('base.user_id')"></Column>
 
             <Column field="is_active" :header="$t('base.is_active')">
@@ -60,7 +65,6 @@
         </TablePagination>
 
 
-
     </Panel>
     <Dialog :header="modalData == null ? $t('base.add') : $t('base.edit')" :showFooter="false" :visible="visible">
         <TripModal :data="modalData" :statuses="statuses" :users="users" :visible="visible"
@@ -89,8 +93,6 @@ const modalData = ref(null);
 const visible = ref({status: false});
 
 
-
-
 const props = defineProps({
     data: {
         type: Object,
@@ -115,6 +117,7 @@ const changeActive = (id) => {
         preserveScroll: true
     });
 }
+
 function openDialog() {
     modalData.value = null;
     visible.value.status = true

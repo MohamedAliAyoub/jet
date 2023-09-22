@@ -1,49 +1,50 @@
 <template>
     <form @submit.prevent="submit" method="post">
-            <div class="grid grid-cols-3 gap-3">
-                <FormInput :form="form" name="departure_country" required/>
-                <FormInput :form="form" name="departure_city" required/>
-                <FormInput :form="form" name="departure_airport_name" required/>
+        <div class="grid grid-cols-3 gap-3">
+            <FormInput :form="form" name="departure_country" required/>
+            <FormInput :form="form" name="departure_city" required/>
+            <FormInput :form="form" name="departure_airport_name" required/>
 
-                <FormInput :form="form" name="arrival_country" required/>
-                <FormInput :form="form" name="arrival_city" required/>
-                <FormInput :form="form" name="arrival_airport_name" required/>
+            <FormInput :form="form" name="arrival_country" required/>
+            <FormInput :form="form" name="arrival_city" required/>
+            <FormInput :form="form" name="arrival_airport_name" required/>
 
-            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+
+            <FormDateInput :form="form" name="date" required/>
+
+            <FormSelect
+                :form="form"
+                name="flight_status"
+                :label="$t('base.flight_status')"
+                :options="statuses"
+                option-label="name"
+                option-value="id"
+
+                required
+            />
+
+            <FormDateTimeInput :form="form" name="take_off_time" required/>
+
+            <FormDateTimeInput :form="form" name="landing_time" required/>
+
             <div class="grid grid-cols-2 gap-2">
 
-                <FormDateInput :form="form" name="date" required/>
-
-
-                <FormSelect
-                    :form="form"
-                    name="flight_status"
-                    :label="$t('base.flight_status')"
-                    :options="statuses"
-                    option-label="name"
-                    option-value="id"
-
-                    required
-                />
-
-
-                <FormDateTimeInput :form="form"    name="take_off_time" required/>
-
-                <FormDateTimeInput :form="form"  name="landing_time" required/>
-
-                <FormNumber :form="form" name="hours" required/>
-
-                <FormSelect
-                    :form="form"
-                    name="user_id"
-                    :label="$t('base.user_id')"
-                    :options="users"
-                    option-label="name"
-                    option-value="id"
-                    required
-                />
+                <FormInput :form="form"  name="hours" required/>
+                <FormInput :form="form"  name="minutes" />
             </div>
-            <SubmitButton :name="$t('save')"/>
+            <FormSelect
+                :form="form"
+                name="user_id"
+                :label="$t('base.user_id')"
+                :options="users"
+                option-label="name"
+                option-value="id"
+                required
+            />
+        </div>
+        <SubmitButton :name="$t('save')"/>
     </form>
 </template>
 
@@ -92,6 +93,8 @@ const form = useForm({
     'flight_status': props.data?.flight_status,
     'user_id': props.data?.user_id,
     'hours': props.data?.hours,
+    'minutes': props.data?.minutes ?? 0,
+
 
 });
 const createable = !props.data

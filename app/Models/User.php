@@ -24,6 +24,8 @@ use Illuminate\Auth\Passwords\CanResetPassword as CanResetPasswordTrait;
  * @property string email
  * @property string avatar
  * @property bool is_active
+ * @property integer hours
+ * @property integer hours_balance
  * @property Integer parent_id
  */
 class User extends Authenticatable implements CanResetPassword
@@ -51,7 +53,8 @@ class User extends Authenticatable implements CanResetPassword
         'is_active',
         'mobile',
         'parent_id',
-        'hours'
+        'hours',
+        'hours_balance',
 
     ];
     protected array $searchColumns = ['name', 'email'];
@@ -79,13 +82,14 @@ class User extends Authenticatable implements CanResetPassword
 
     public function parent(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(User::Class , 'parent_id');
+        return $this->belongsTo(User::Class, 'parent_id');
     }
 
-  public function trips(): \Illuminate\Database\Eloquent\Relations\HasMany
-  {
-      return $this->hasMany(Trip::class);
-  }
+    public function trips(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Trip::class);
+    }
+
 
     public function setPasswordAttribute($new_password)
     {

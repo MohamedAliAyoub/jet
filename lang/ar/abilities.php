@@ -15,6 +15,7 @@ return [
     Abilities::MODULE_ROLE_DELETE->value => 'حذف الدور',
 
     Abilities::MODULE_TRIP_INDEX->value => 'عرض الرحلات',
+    Abilities::MODULE_NEXT_TRIP_INDEX->value =>  'عرض الرحلات القادمة',
     Abilities::MODULE_TRIP_CREATE->value => 'اضافة الرحلة',
     Abilities::MODULE_TRIP_UPDATE->value => 'تعديل الرحلة',
     Abilities::MODULE_TRIP_DELETE->value => 'حذف الرحلة',

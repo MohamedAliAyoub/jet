@@ -26,7 +26,7 @@ use App\Actions\User\Role\{
 use App\Actions\User\Trip\{
     TripIndexAction,
     TripStoreAction,
-    TripCreateAction,
+    NextTripIndexAction,
     TripEditAction,
     TripUpdateAction,
     TripDeleteAction,
@@ -66,6 +66,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('trips')->as('trips.')->group(function () {
         Route::get('/', TripIndexAction::class)->name('index');
+        Route::get('/next-trips', NextTripIndexAction::class)->name('next-trips');
         Route::post('/', TripStoreAction::class)->name('store');
         Route::get('/create', [TripStoreAction::class, 'view_form'])->name('create');
         Route::get('/{trip}/edit', TripEditAction::class)->name('edit');

@@ -62,6 +62,13 @@ class Menu
             route('user.trips.index'),
             'trips'
         );
+        $this->addNavItem(
+            Abilities::MODULE_NEXT_TRIP_INDEX,
+            ModuleName::NEXT_TRIPS->value,
+            'pi pi-twitter',
+            route('user.trips.index'),
+            'next_trips'
+        );
 
 
     }

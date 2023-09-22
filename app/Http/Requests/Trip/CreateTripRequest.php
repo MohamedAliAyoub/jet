@@ -34,6 +34,7 @@ class CreateTripRequest extends FormRequest
             "landing_time" => ['required', 'date' ,  'after:take_off_time' ],
             "flight_status" => ['required', new Enum(TripStatusEnum::class) ],
             "hours" => ['required', 'numeric' , "max:90" ],
+            "minutes" => ['nullable', 'numeric' , "max:59" ],
             'user_id' => [
                 'required',
                 Rule::exists('users', 'id')->whereNull('parent_id')
@@ -53,9 +54,10 @@ class CreateTripRequest extends FormRequest
             "arrival_airport_name" => ['required', 'string', ],
             "date" => ['required', 'string' ],
             'take_off_time' => ['required'],
-            "landing_time" => ['required' ,  'after:take_off_time' ],
+            "landing_time" => ['required'  ],
             "flight_status" => ['required',  new Enum(TripStatusEnum::class) ],
             "hours" => ['required', 'numeric' , "max:90" ],
+            "minutes" => ['nullable', 'numeric' , "max:59" ],
             'user_id' => [
                 'required',
                 Rule::exists('users', 'id')->whereNull('parent_id')

@@ -21,6 +21,7 @@ class TripStoreAction
     protected Abilities $ability = Abilities::MODULE_TRIP_CREATE;
 
     use AsAction;
+
     private $userLogService;
 
     public function __construct(UserLogService $userLogService)
@@ -31,37 +32,36 @@ class TripStoreAction
     public function handle(CreateTripRequest $request): \Illuminate\Http\RedirectResponse
     {
 
-        if (User::find($request->user_id)->hours <= 0){
+        if (User::find($request->user_id)->hours <= 0) {
             toastr()->error(__('message.error_response_message'));
             return back();
         }
+        $data = $request->validated();
+        $trip = Trip::query()->create($data);
 
-        $trip = Trip::query()->create($request->validated());
-
-        $this->userLogService->createLog(
-            [
-                'en' => 'trip in '.$trip->arrival_country ,
-                'ar'=>'رحلة الى ' .$trip->arrival_country ] ,
-            [
-                'en' => 'You have a flight in  '.$trip->arrival_country.'  on '.$trip->date ,
-                'ar'=>'لديك رحلة الى '.$trip->arrival_country.'  بتاريخ' .$trip->date
-            ] ,
-
-            auth()->user()->id
-        );
+        $this->notification($trip);
 
         //Discount of flight hours for the user
-        $unused_hours = $trip->user->hours - $trip->hours;
+        $unused_hours = $trip->user->hours - (($trip->hours *60) + $trip->minutes ) ;
         $trip->user->update(['hours' => $unused_hours]);
 
         toastr()->success(__('message.success_response_message'));
         return Redirect::route('user.trips.index');
     }
 
-    public function view_form(): \Inertia\Response
+    public function notification($trip): void
     {
-        return Inertia::render('Trip/Form', [
-            'status' => TripStatusEnum::getOptionsData(),
-        ]);
+        $this->userLogService->createLog(
+            [
+                'en' => 'trip in ' . $trip->arrival_country,
+                'ar' => 'رحلة الى ' . $trip->arrival_country],
+            [
+                'en' => 'You have a flight in  ' . $trip->arrival_country . '  on ' . $trip->date,
+                'ar' => 'لديك رحلة الى ' . $trip->arrival_country . '  بتاريخ' . $trip->date
+            ],
+
+            auth()->user()->id
+        );
     }
+
 }

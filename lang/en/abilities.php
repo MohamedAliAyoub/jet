@@ -19,6 +19,7 @@ return [
     Abilities::MODULE_ROLE_DELETE->value => 'role delete',
 
     Abilities::MODULE_TRIP_INDEX->value =>  'trip index',
+    Abilities::MODULE_NEXT_TRIP_INDEX->value =>  'next trip  index',
     Abilities::MODULE_TRIP_CREATE->value => 'trip index',
     Abilities::MODULE_TRIP_UPDATE->value => 'trip update',
     Abilities::MODULE_TRIP_DELETE->value => 'trip delete',

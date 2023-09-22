@@ -11,7 +11,7 @@
                     <Anchor :label="row.data.name" v-ability="Ability.MODULE_ADMINS_INDEX_RELATIVES" :href="route('user.admins.index.Relatives' , row.data.id)"/>
                 </template>
             </Column>
-            <Column field="email" :header="$t('base.email')"></Column>
+            <Column field="hours_balance" :header="$t('base.total_hours')"></Column>
             <Column field="hours" :header="$t('base.hours')"></Column>
             <Column field="roles" :header="$t('base.role')">
                 <template #body="row">

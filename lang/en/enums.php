@@ -6,6 +6,7 @@ return [
         'admins' => 'admins',
         'roles' => 'roles',
         'trips' => 'trips',
+        'next_trips' => 'next trips',
     ],
 
 

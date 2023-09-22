@@ -70,6 +70,8 @@ return [
     'trip' => 'trip',
     'trips' => 'trips',
     'hours' => 'hours',
+    'total_hours' => 'total_hours',
+    'minutes' => 'minutes',
     'hour' => 'hour',
     'heading_to' => 'The flight is heading to ',
     'users' => 'users',

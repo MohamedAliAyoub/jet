@@ -2,6 +2,7 @@
 
 namespace App\Actions\User\Dahboard;
 
+use App\Enums\UserTypeEnum;
 use App\Models\Trip;
 use App\Models\User;
 use Inertia\Inertia;
@@ -13,10 +14,10 @@ class DashoardAction
 
     public function handle(): \Inertia\Response
     {
-        if (auth()->user()->roles()->first()?->name == 'traveller') {
+        if (auth()->user()->roles()->first()?->name == UserTypeEnum::TRAVELLER) {
             return $this->home_travellers();
         }
-        if (auth()->user()->roles()->first()?->name == 'relative') {
+        if (auth()->user()->roles()->first()?->name == UserTypeEnum::RELATIVE->value) {
             return $this->home_travellers(auth()->user()->parent_id);
         }
 
@@ -50,6 +51,7 @@ class DashoardAction
     {
         if (!$user_id)
             $user_id = auth()->id();
+
         $user = User::find($user_id);
         return Inertia::render('HomeTravellers', [
             'total_hours' =>$user->hours_balance,

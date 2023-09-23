@@ -37,7 +37,7 @@ class NextTripIndexAction
             ->paginate(5);
 
         if (isset($request['export_excel'])) {
-            return Excel::download(new TripsExport(), 'trips_' . Carbon::now()->toDateString() . '.xlsx');
+            return Excel::download(new TripsExport($data), 'trips_' . Carbon::now()->toDateString() . '.xlsx');
         }
         return inertia('Trip/Index', [
             'data' => $data,

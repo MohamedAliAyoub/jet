@@ -36,14 +36,16 @@ class TripIndexAction
             ->orderByDesc('id')
             ->paginate(5);
 
-        if (isset($request['export_excel'])) {
-            return Excel::download(new TripsExport(), 'trips_' . Carbon::now()->toDateString() . '.xlsx');
+        if ($request['export_excel'])
+            return Excel::download(new TripsExport($data), 'trips_' . Carbon::now()->toDateString() . '.xlsx');
 
-        }
+
         return inertia('Trip/Index', [
             'data' => $data,
             'statuses' => TripStatusEnum::getOptionsData(),
-            'users' => User::query()->whereNull('parent_id')->get(['id', 'name'])
+            'users' => User::query()->whereHas('roles' , function($q){
+                $q->where('name' , 'traveller');
+            })->whereNull('parent_id')->get(['id', 'name'])
         ]);
     }
 }

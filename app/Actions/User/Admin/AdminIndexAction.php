@@ -34,14 +34,6 @@ class AdminIndexAction
             ->orderByDesc('id')
             ->paginate();
 
-        // Perform the operation to divide 'hours' by 60
-        $data->transform(function ($user) {
-            $minutes = $user->hours % 60;
-//            dd($user->hours , $minutes);
-            $hours = ($user->hours - $minutes) / 60;
-            $user->hours = $hours .":". $minutes;
-            return $user;
-        });
         $usersNotActions = User::query()
             ->where('id', auth()->id())
             ->orWhere('email', User::SUPERADMIN_EMAIL)->get()->pluck('id');

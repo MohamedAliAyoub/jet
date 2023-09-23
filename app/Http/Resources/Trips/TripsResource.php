@@ -17,8 +17,8 @@ class TripsResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'your_hours' => auth()->user()->hours,
-            'your_flights' => 90 - auth()->user()->hours,
+            'your_hours' => auth()->user()->hours_balance,
+            'your_flights' =>  auth()->user()->hours_number,
 
             'departure_country' => $this->departure_country,
             'departure_city' => $this->departure_city,

@@ -24,5 +24,6 @@ return [
     Abilities::MODULE_TRIP_UPDATE->value => 'trip update',
     Abilities::MODULE_TRIP_DELETE->value => 'trip delete',
     Abilities::MODULE_TRIP_ACTIVE->value => 'trip is active',
+    Abilities::MODULE_TRIP_EXPORT->value => 'trip  export',
 
 ];

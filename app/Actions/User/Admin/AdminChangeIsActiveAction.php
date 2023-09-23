@@ -11,7 +11,7 @@ class AdminChangeIsActiveAction
     use AsAction;
     protected Abilities $ability = Abilities::MODULE_ADMINS_ACTIVE;
 
-    public function handle(User $admin)
+    public function handle(User $admin): \Illuminate\Http\RedirectResponse
     {
         $admin->is_active = ! $admin->is_active;
 

@@ -10,6 +10,7 @@ use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
@@ -38,7 +39,7 @@ class User extends Authenticatable implements CanResetPassword
         TimeStampsTrait;
 
     const SUPERADMIN_EMAIL = 'info@privatejet.com';
-    protected $appends = ['avatar_url'];
+    protected $appends = ['hours_number'];
 
     /**
      * The attributes that are mass assignable.
@@ -90,6 +91,14 @@ class User extends Authenticatable implements CanResetPassword
         return $this->hasMany(Trip::class);
     }
 
+    public function getHoursNumberAttribute()
+    {
+        $minutes = intval($this->hours) % 60 ;
+//            dd($user->hours , $minutes);
+        $hours = (intval($this->hours) - $minutes) / 60;
+        $this->hours = $hours .":". $minutes;
+        return $this->hours ;
+    }
 
     public function setPasswordAttribute($new_password)
     {

@@ -21,15 +21,23 @@ class AdminUpdateAction
     public function handle(CreateAdminRequest $request, User $admin): \Illuminate\Http\RedirectResponse
     {
         $data = $request->validated();
-        unset($request->role_id);
-//        if ($request->hasFile('avatar')) {
-//            if (Storage::exists('public/' . $admin->avatar))
-//                Storage::delete('public/' . ($admin->avatar));
-//            $avatarPath = $request->file('avatar')->store('image/avatar', 'public');
-//            $data['avatar'] = $avatarPath;
-//        }
-        $admin->update($data);
+        if ($request->hours)
+        {
+            list($number1, $number2) = explode(":", $request->hours);
 
+            $hours = (int)$number1;
+            $minutes = (int)$number2;
+
+            $data['hours'] = $hours * 60 + $minutes;
+        }
+        if ($request->hours_balance)
+        {
+            $hours_diff = ($admin->hours_balance - $request->hours_balance) * 60;
+            $data['hours'] = $admin->hours - $hours_diff ;
+        }
+        unset($request->role_id);
+
+        $admin->update($data);
 
         if ($request->role_id)
             $admin->roles()->sync([$request->role_id]);

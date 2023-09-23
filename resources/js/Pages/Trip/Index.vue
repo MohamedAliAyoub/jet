@@ -3,7 +3,7 @@
         <template #actions>
             <PrimaryButton :name="$t('add')" v-ability="Ability.MODULE_TRIP_CREATE"
                            @click.prevent="openDialog"/>
-            <ActionMenu :execl="true"/>
+            <ActionMenu :execl="true" v-ability="Ability.MODULE_TRIP_EXPORT"/>
         </template>
 
         <TablePagination :tableData="data">
@@ -19,16 +19,17 @@
             <Column field="arrival_airport_name" :header="$t('base.arrival_airport_name')"></Column>
 
 
-            <Column field="date" :header="$t('base.date')"></Column>
-            <Column field="take_off_time" :header="$t('base.take_off_time')"></Column>
-            <Column field="landing_time" :header="$t('base.landing_time')"></Column>
+            <Column field="date" :header="$t('base.date')" style=" font-size: 14px;"></Column>
+            <Column field="take_off_time" :header="$t('base.take_off_time')" style=" font-size: 15px;" ></Column>
+            <Column field="landing_time" :header="$t('base.landing_time')" style=" font-size: 15px;"></Column>
+
             <Column field="flight_status_text" :header="$t('base.flight_status')"></Column>
             <Column field="hours" :header="$t('base.hours')">
                 <template #body="row">
                     <div>{{ row.data.hours_with_minutes }}</div>
                 </template>
             </Column>
-            <Column field="user.name" :header="$t('base.user_id')"></Column>
+            <Column field="user.name" :header="$t('base.user_id')" style=" font-size: 14px;"></Column>
 
             <Column field="is_active" :header="$t('base.is_active')">
                 <template #body="row">

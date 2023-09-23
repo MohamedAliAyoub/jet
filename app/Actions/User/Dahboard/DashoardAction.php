@@ -29,7 +29,9 @@ class DashoardAction
 
         return Inertia::render('Home', [
             'users_count' => User::count(),
-            'travelers_count' => User::query()->whereNull('parent_id')->count(),
+            'travelers_count' => User::query()->whereHas('roles', function ($q) {
+                $q->where('name', 'traveller');
+            })->whereNull('parent_id')->count(),
             'relatives_count' => User::query()->whereNotNull('parent_id')->count(),
             'trips' => Trip::query()
                 ->where('is_active', true)
@@ -46,31 +48,22 @@ class DashoardAction
 
     public function home_travellers($user_id = null): \Inertia\Response
     {
-        if ($user_id == null)
+        if (!$user_id)
             $user_id = auth()->id();
-        $relatives_count = User::query()
-            ->where('parent_id', $user_id)
-            ->whereNotNull('parent_id')
-            ->count();
-        $trips = Trip::query()
-            ->where('user_id', $user_id)
-            ->where('is_active', true)
-            ->count();
-        $next_trips = Trip::query()
-            ->where('user_id', $user_id)
-            ->whereDate('date', '<', now())
-            ->where('is_active', true)
-            ->count();
-        $cancelled_trips = Trip::query()
-            ->where('user_id', $user_id)
-            ->where('is_active', false)
-            ->count();
-
+        $user = User::find($user_id);
         return Inertia::render('Home', [
-            $relatives_count,
-            $trips,
-            $next_trips,
-            $cancelled_trips,
+            'total_hours' =>$user->hours_balance,
+            'hours' => $user->hours_number,
+            'trips' => Trip::query()
+                ->where('user_id', $user_id)
+                ->where('is_active', true)
+                ->count(),
+            'next_trips' => Trip::query()
+                ->where('user_id', $user_id)
+                ->whereDate('date', '<', now())
+                ->where('is_active', true)
+                ->count(),
+
         ]);
     }
 }

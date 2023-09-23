@@ -28,7 +28,8 @@ class CreateAdminRequest extends FormRequest
             'avatar.*' => ['nullable','image','max:3000','mimes:jpg,png,jpeg,gif,svg'],
             'role_id'=> ['nullable' , 'exists:roles,id'],
             'mobile' => ['nullable', 'numeric'],
-            'hours' => ['nullable', 'numeric'],
+            'hours' => ['nullable' ],
+            'hours_balance' => ['nullable' ],
             'parent_id' => [
                 'nullable',
                 Rule::exists('users', 'id')->whereNull('parent_id')
@@ -52,7 +53,8 @@ class CreateAdminRequest extends FormRequest
             'avatar.*' => ['nullable','image','max:3000','mimes:jpg,png,jpeg,gif,svg'],
             'role_id'=> ['nullable' , 'exists:roles,id'],
             'mobile' => ['nullable', 'numeric'],
-            'hours' => ['nullable', 'numeric'],
+            'hours' => ['nullable'],
+            'hours_balance' => ['nullable'],
             'parent_id' => [
                 'nullable',
                 Rule::exists('users', 'id')->whereNull('parent_id')

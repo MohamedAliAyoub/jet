@@ -12,7 +12,11 @@
                 </template>
             </Column>
             <Column field="hours_balance" :header="$t('base.total_hours')"></Column>
-            <Column field="hours" :header="$t('base.hours')"></Column>
+            <Column field="hours" :header="$t('base.hours')">
+                <template #body="row" >
+                    {{row.data.hours_number}}
+                </template>
+            </Column>
             <Column field="roles" :header="$t('base.role')">
                 <template #body="row">
                     <p v-for="item in row.data.roles" v-text="item.name"/>

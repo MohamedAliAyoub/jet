@@ -17,9 +17,8 @@ class AuthUserResource extends JsonResource
     {
         return [
             'name' => $this->name,
-            'hours' => $this->hours,
-            'your_flights' => $this->hours,
-//            'your_flights' => $this->hours_balance - $this->hours ,
+            'hours' => $this->hours_balance,
+            'your_flights' => $this->hours_number,
 
         ];
     }

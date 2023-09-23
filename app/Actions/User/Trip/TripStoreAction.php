@@ -51,17 +51,20 @@ class TripStoreAction
 
     public function notification($trip): void
     {
-        $this->userLogService->createLog(
-            [
-                'en' => 'trip in ' . $trip->arrival_country,
-                'ar' => 'رحلة الى ' . $trip->arrival_country],
-            [
-                'en' => 'You have a flight in  ' . $trip->arrival_country . '  on ' . $trip->date,
-                'ar' => 'لديك رحلة الى ' . $trip->arrival_country . '  بتاريخ' . $trip->date
-            ],
+        if (isset( $trip->user_id))
+        {
+            $this->userLogService->createLog(
+                [
+                    'en' => 'trip in ' . $trip->arrival_country,
+                    'ar' => 'رحلة الى ' . $trip->arrival_country],
+                [
+                    'en' => 'You have a flight in  ' . $trip->arrival_country . '  on ' . $trip->date,
+                    'ar' => 'لديك رحلة الى ' . $trip->arrival_country . '  بتاريخ' . $trip->date
+                ],
+                $trip->user_id
+            );
+        }
 
-            auth()->user()->id
-        );
     }
 
 }

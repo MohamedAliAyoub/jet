@@ -2,39 +2,45 @@
 
 namespace App\Exports;
 
-use App\Models\User;
+use App\Models\Trip;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class TripsExport implements  FromCollection, WithHeadings
+class TripsExport implements FromCollection, WithHeadings
 {
     /**
-    * @return \Illuminate\Support\Collection
-    */
+     * @return \Illuminate\Support\Collection
+     */
+
+    protected $data;
+
+    public function __construct($data)
+    {
+        $this->data = $data;
+    }
     public function collection()
     {
-        return User::query()->get()->map(function ($q){
+        return$this->data->map(function ($q) {
             return [
                 'id' => $q->id,
-                'departure_country' => $q->departure_country ,
-                'departure_city' , $q->departure_city,
-                'departure_airport_name' , $q->departure_airport_name,
-                'arrival_country' , $q->arrival_country,
-                'arrival_city' , $q->arrival_city,
-                'arrival_airport_name' , $q->arrival_airport_name,
-                'date' , $q->date,
-                'take_off_time' , $q->take_off_time,
-                'landing_time' , $q->landing_time,
-                'flight_status' , $q->flight_status,
-                'hours' , $q->hours,
-                'created_at' => $q->created_at ,
-                'updated_at' => $q->updated_at ,
-
-
+                'departure_country' => $q->departure_country,
+                'departure_city' => $q->departure_city,
+                'departure_airport_name' => $q->departure_airport_name,
+                'arrival_country' => $q->arrival_country,
+                'arrival_city' => $q->arrival_city,
+                'arrival_airport_name' => $q->arrival_airport_name,
+                'date' => $q->date,
+                'take_off_time' => $q->take_off_time,
+                'landing_time' => $q->landing_time,
+                'flight_status' => $q->flight_status_text,
+                'hours' => $q->hours,
+                'created_at' => $q->created_at,
+                'updated_at' => $q->updated_at,
             ];
         });
 
     }
+
     public function headings(): array
     {
         return [

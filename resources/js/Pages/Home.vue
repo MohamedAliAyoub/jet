@@ -10,12 +10,12 @@
                                 <div class="flex space-x-8 w-56">
                                     <div class="">
                                         <div class="uppercase text-sm text-gray-400">
-                                            {{ $t('base.users_count') }}
+                                            {{ $t('base.hours_balance') }}
                                         </div>
                                         <div class="mt-1">
                                             <div class="flex space-x-2 items-center">
                                                 <div class="text-2xl">
-                                                    {{ props.users_count }}
+                                                    {{ props.total_hours }}
                                                 </div>
                                                 <div class="text-xs text-green-800 bg-green-200 rounded-md p-1">
                                                     +4.5%
@@ -38,12 +38,12 @@
                                 <div class="flex space-x-8 w-56">
                                     <div class="">
                                         <div class="uppercase text-sm text-gray-400">
-                                            {{ $t('base.travelers_count') }}
+                                            {{ $t('base.hours') }}
                                         </div>
                                         <div class="mt-1">
                                             <div class="flex space-x-2 items-center">
                                                 <div class="text-2xl">
-                                                    {{ travelers_count }}
+                                                    {{ hours }}
                                                 </div>
                                                 <div class="text-xs text-green-800 bg-green-200 rounded-md p-1">
                                                     +4.5%
@@ -100,7 +100,7 @@
                                         <div class="mt-1">
                                             <div class="flex space-x-2 items-center">
                                                 <div class="text-2xl">
-                                                    {{ upcoming_trips }}
+                                                    {{ next_trips }}
                                                 </div>
                                                 <div class="text-xs text-green-800 bg-green-200 rounded-md p-1">
                                                     +4.5%
@@ -127,20 +127,16 @@ import Panel from "@/Layout/Dashboard/Panel.vue";
 import {defineProps} from "vue";
 
 const props = defineProps({
-    users_count: {
-        type: Object,
+    total_hours: {
         required: true
     },
-    travelers_count: {
-        type: Object,
+    hours: {
         required: true
     },
     trips: {
-        type: Object,
         required: true
     },
-    upcoming_trips: {
-        type: Object,
+    next_trips: {
         required: true
     }
 });

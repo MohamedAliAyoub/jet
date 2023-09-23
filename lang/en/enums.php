@@ -14,6 +14,13 @@ return [
         [
             'posting' => 'posting',
             'with_passengers_onboard' => 'with passengers onboard',
+        ],
+
+        'UserTypeEnum' =>
+        [
+            'admin' => 'admin',
+            'relative' => 'relative',
+            'traveller' => 'traveller',
         ]
 
 

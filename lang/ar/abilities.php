@@ -20,5 +20,6 @@ return [
     Abilities::MODULE_TRIP_UPDATE->value => 'تعديل الرحلة',
     Abilities::MODULE_TRIP_DELETE->value => 'حذف الرحلة',
     Abilities::MODULE_TRIP_ACTIVE->value => 'تفعيل الرحلة',
+    Abilities::MODULE_TRIP_EXPORT->value =>  'تصدير بيانات الرحلات',
 
 ];

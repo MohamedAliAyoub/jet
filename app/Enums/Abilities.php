@@ -28,6 +28,7 @@ enum Abilities: string
     case MODULE_TRIP_UPDATE = 'module trip update';
     case MODULE_TRIP_DELETE = 'module trip delete';
     case MODULE_TRIP_ACTIVE = 'module trip Active';
+    case MODULE_TRIP_EXPORT = 'module trip export';
 
 
 
@@ -56,6 +57,9 @@ enum Abilities: string
         ['key' => self::MODULE_TRIP_UPDATE, 'module' => ModuleName::TRIPS],
         ['key' => self::MODULE_TRIP_DELETE, 'module' => ModuleName::TRIPS],
         ['key' => self::MODULE_TRIP_ACTIVE, 'module' => ModuleName::TRIPS],
+        ['key' => self::MODULE_TRIP_EXPORT, 'module' => ModuleName::TRIPS],
+
+
 
 
 

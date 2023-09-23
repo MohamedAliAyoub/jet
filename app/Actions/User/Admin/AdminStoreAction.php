@@ -34,10 +34,10 @@ class AdminStoreAction
 
     public function view_form(): \Inertia\Response
     {
+
         return Inertia::render('Admin/CreateAdmin', [
             'roles' => Role::query()->get(),
             'parents' => User::whereNull('parent_id')->get(),
-
         ]);
     }
 }

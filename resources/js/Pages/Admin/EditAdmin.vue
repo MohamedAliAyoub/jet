@@ -19,7 +19,7 @@
                                 :options="parents"
                                 option-label="name"
                                 option-value="id"/>
-                    <FormInput :form="formUpdate" :required="1" :name="$t('hours')"/>
+                    <FormInput :form="formUpdate"  :name="$t('hours_balance')"/>
 
 <!--                    <FormFile :form="formUpdate" type="file" :src="data.avatar_url" :name="$t('avatar')"/>-->
 
@@ -51,7 +51,8 @@ const formUpdate = useForm({
     'avatar': props.data?.avatar ?? [],
     'role_id': props.data?.role_id,
     'parent_id': props.data?.parent_id,
-    'hours': props.data?.hours,
+    'hours': props.data?.hours_number,
+    'hours_balance': props.data?.hours_balance,
     'password': '',
     'password_confirmation':'',
 });

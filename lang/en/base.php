@@ -73,6 +73,7 @@ return [
     'total_hours' => 'total_hours',
     'minutes' => 'minutes',
     'hour' => 'hour',
+    'hours_balance' => 'hours balance',
     'heading_to' => 'The flight is heading to ',
     'users' => 'users',
     "users_count" => "users count",

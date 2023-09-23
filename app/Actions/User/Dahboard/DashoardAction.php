@@ -51,7 +51,7 @@ class DashoardAction
         if (!$user_id)
             $user_id = auth()->id();
         $user = User::find($user_id);
-        return Inertia::render('Home', [
+        return Inertia::render('HomeTravellers', [
             'total_hours' =>$user->hours_balance,
             'hours' => $user->hours_number,
             'trips' => Trip::query()
